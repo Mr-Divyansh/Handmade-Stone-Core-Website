@@ -1,49 +1,189 @@
-# StoneCore — Setup Guide
+# StoneCore — Handcrafted Zen Decor
+
+## Project Overview
+StoneCore is an e-commerce website for handcrafted Zen decor products including stone gardens, miniature shrines, bonsai arrangements, and meditation accessories. The website features a dynamic product catalog powered by PHP and MySQL.
 
 ## Folder Structure
-```
+
 stonecore/
-├── config.php              ← DB connection
-├── database.sql            ← Import in phpMyAdmin
-├── products-loader.js      ← Add to index.html
+├── config.php ← Database connection
+├── database.sql ← Import in phpMyAdmin
+├── products-loader.js ← Add to index.html
 ├── api/
-│   ├── products.php        ← GET all products
-│   ├── add_product.php     ← POST add product
-│   ├── edit_product.php    ← POST edit product
-│   └── delete_product.php  ← GET delete product
+│ ├── products.php ← GET all products
+│ ├── add_product.php ← POST add product
+│ ├── edit_product.php ← POST edit product
+│ └── delete_product.php ← GET delete product
 ├── admin/
-│   └── index.html          ← Admin panel
-└── img/                    ← Product images folder
-```
+│ └── index.html ← Admin panel
+├── css/
+│ └── styles.css ← Main stylesheet
+├── js/
+│ └── ProductsLoader.js ← Product loader script
+├── img/ ← Product images folder
+└── index.html ← Main website
+
+
+## Prerequisites
+- XAMPP / WAMP / MAMP (PHP 7.4+ and MySQL)
+- Web browser (Chrome/Firefox recommended)
 
 ## Step 1 — Database Setup
-1. phpMyAdmin open karo
-2. `database.sql` file import karo
-3. Database `stonecore_db` ban jayega with sample data
+1. Start XAMPP and turn on **Apache** and **MySQL** services
+2. Open phpMyAdmin: `http://localhost/phpmyadmin`
+3. Click on **New** database or import directly
+4. Click **Import** tab
+5. Choose the `database.sql` file from the project folder
+6. Click **Go** at the bottom
+7. Database `stonecore_db` will be created with sample product data
 
 ## Step 2 — Config Update
-`config.php` mein apna DB credentials daalo:
+Open `config.php` and update your database credentials:
+
 ```php
-define('DB_USER', 'your_username');
-define('DB_PASS', 'your_password');
-```
+<?php
+// config.php — Database Connection
 
-## Step 3 — Frontend Connect
-`index.html` ke end mein yeh add karo (</body> se pehle):
-```html
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');           // Change if your username is different
+define('DB_PASS', '');               // Add your MySQL password if any
+define('DB_NAME', 'stonecore_db');
+
+$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+if ($conn->connect_error) {
+    die(json_encode([
+        'success' => false,
+        'message' => 'Connection failed: ' . $conn->connect_error
+    ]));
+}
+
+$conn->set_charset('utf8mb4');
+?>
+
+Step 3 — Project Location
+Move the entire stonecore folder to your web server directory:
+
+XAMPP: C:/xampp/htdocs/stonecore/
+
+WAMP: C:/wamp/www/stonecore/
+
+MAMP: /Applications/MAMP/htdocs/stonecore/
+
+Step 4 — Frontend Connection
+Make sure index.html includes the product loader script. Add this line just before the </body> tag:
+
+html
 <script src="products-loader.js"></script>
-```
+If the script is in a js/ folder, use:
 
-## Step 4 — Admin Panel
-Browser mein open karo:
-```
+html
+<script src="js/ProductsLoader.js"></script>
+Step 5 — Admin Panel Access
+Open your browser and navigate to:
+
+text
 http://localhost/stonecore/admin/
-```
+From the admin panel you can:
 
-## API Endpoints
-| Method | URL                          | Use              |
-|--------|------------------------------|------------------|
-| GET    | api/products.php             | All products     |
-| POST   | api/add_product.php          | Add product      |
-| POST   | api/edit_product.php         | Edit product     |
-| GET    | api/delete_product.php?id=1  | Delete product   |
+View all products
+
+Add new products
+
+Edit existing products
+
+Delete products
+
+Step 6 — View Website
+Open your browser and go to:
+
+text
+http://localhost/stonecore/
+API Endpoints
+Method	URL	Description
+GET	http://localhost/stonecore/api/products.php	Get all products
+POST	http://localhost/stonecore/api/add_product.php	Add a new product
+POST	http://localhost/stonecore/api/edit_product.php	Edit existing product
+GET	http://localhost/stonecore/api/delete_product.php?id=1	Delete product by ID
+API Response Examples
+GET /api/products.php
+json
+{
+  "success": true,
+  "products": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "category": "Zen Stack",
+      "price": "1499.00",
+      "description": "Handcrafted stacked river stones...",
+      "image": "img/Image1.png",
+      "created_at": "2025-01-15 10:30:00"
+    }
+  ]
+}
+POST /api/add_product.php (Form Data)
+Field	Type	Required
+name	string	Yes
+category	string	Yes
+price	decimal	Yes
+description	string	No
+image	file	No
+GET /api/delete_product.php?id=1
+json
+{
+  "success": true,
+  "message": "Product deleted"
+}
+Troubleshooting
+Database Connection Error
+Make sure MySQL is running in XAMPP
+
+Check username/password in config.php
+
+Verify database name stonecore_db exists
+
+Products Not Loading on Website
+Check browser console for errors (F12 → Console tab)
+
+Verify products-loader.js path is correct
+
+Make sure api/products.php returns JSON data
+
+Image Upload Fails
+Ensure img/ folder has write permissions (755 on Linux/Mac)
+
+Maximum file size: 2MB
+
+Allowed formats: JPG, JPEG, PNG, WEBP
+
+404 Errors
+Make sure project is inside htdocs folder
+
+URL should be http://localhost/stonecore/ not file:///...
+
+Sample Admin Panel Features
+The admin panel (admin/index.html) includes:
+
+Product list with edit/delete buttons
+
+Add new product form with image upload
+
+Edit product modal
+
+Real-time product management
+
+Technologies Used
+Frontend: HTML5, CSS3, Vanilla JavaScript
+
+Backend: PHP 7.4+
+
+Database: MySQL
+
+Fonts: Google Fonts (Cormorant Garamond, Cinzel, Jost)
+
+Browser Support
+Chrome (latest)
+Firefox (latest)
+Safari (latest)
+Edge (latest)
