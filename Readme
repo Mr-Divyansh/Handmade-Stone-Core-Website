@@ -1,0 +1,49 @@
+# StoneCore — Setup Guide
+
+## Folder Structure
+```
+stonecore/
+├── config.php              ← DB connection
+├── database.sql            ← Import in phpMyAdmin
+├── products-loader.js      ← Add to index.html
+├── api/
+│   ├── products.php        ← GET all products
+│   ├── add_product.php     ← POST add product
+│   ├── edit_product.php    ← POST edit product
+│   └── delete_product.php  ← GET delete product
+├── admin/
+│   └── index.html          ← Admin panel
+└── img/                    ← Product images folder
+```
+
+## Step 1 — Database Setup
+1. phpMyAdmin open karo
+2. `database.sql` file import karo
+3. Database `stonecore_db` ban jayega with sample data
+
+## Step 2 — Config Update
+`config.php` mein apna DB credentials daalo:
+```php
+define('DB_USER', 'your_username');
+define('DB_PASS', 'your_password');
+```
+
+## Step 3 — Frontend Connect
+`index.html` ke end mein yeh add karo (</body> se pehle):
+```html
+<script src="products-loader.js"></script>
+```
+
+## Step 4 — Admin Panel
+Browser mein open karo:
+```
+http://localhost/stonecore/admin/
+```
+
+## API Endpoints
+| Method | URL                          | Use              |
+|--------|------------------------------|------------------|
+| GET    | api/products.php             | All products     |
+| POST   | api/add_product.php          | Add product      |
+| POST   | api/edit_product.php         | Edit product     |
+| GET    | api/delete_product.php?id=1  | Delete product   |
