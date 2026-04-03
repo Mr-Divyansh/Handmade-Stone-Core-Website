@@ -39,3 +39,12 @@ if ($stmt->execute()) {
 $stmt->close();
 $conn->close();
 ?>
+
+<script>
+const data = new FormData(document.querySelector('#productForm'));
+fetch('../Php/AddProduct.php', { method:'POST', body:data })
+  .then(r => r.text())
+  .then(t => { console.log('RAW:', t); 
+                try { console.log('JSON:', JSON.parse(t)); }
+                catch(e) { console.error('JSON parse failed', e); } });
+</script>

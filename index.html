@@ -108,26 +108,14 @@
   <div class="products-grid">
     <?php
     // Include database config and fetch products
-    require_once 'php/Config.php';
+    require_once 'Php/Config.php';
     $result = $conn->query("SELECT * FROM products ORDER BY created_at DESC LIMIT 4");
-    
-    // Visual mapping for categories (same as original design)
-    $visuals = [
-      'Zen Stack'         => '<div class="pv-stones"><div class="pv-stone" style="width:80px;height:50px;"></div><div class="pv-stone" style="width:60px;height:38px;"></div><div class="pv-stone" style="width:42px;height:28px;"></div></div>',
-      'Shrine Garden'     => '<div class="pv-shrine-wrap"><div class="pv-roof"></div><div class="pv-body"><div class="pv-door"></div></div><div class="pv-base"></div></div>',
-      'Monk Series'       => '<div class="pv-monk">🧘</div>',
-      'Bonsai Collection' => '<div class="pv-bonsai"><div class="pv-canopy"></div><div class="pv-trunk"></div></div>',
-      'Bridge Series'     => '<div class="pv-bridge"><div class="pv-arch"></div><div class="pv-platform"></div></div>',
-      'Premium Set'       => '<div class="pv-monk">🪨</div>',
-    ];
     
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $cat = $row['category'];
-            $visualHtml = isset($visuals[$cat]) ? $visuals[$cat] : '<div class="pv-monk">🪨</div>';
-            // Use image if exists, otherwise fallback to visual
+            // Use image if exists
             $imgHtml = '';
-            if (!empty($row['image']) && file_exists('../' . $row['image'])) {
+            if (!empty($row['image']) && file_exists($row['image'])) {
                 $imgHtml = '<img src="' . htmlspecialchars($row['image']) . '" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" alt="' . htmlspecialchars($row['name']) . '">';
             }
             echo '
@@ -135,7 +123,6 @@
               <div class="product-card-inner">
                 <div class="product-visual">
                   ' . $imgHtml . '
-                  ' . $visualHtml . '
                   <div class="product-moss">
                     <div class="moss-blob" style="width:20px;height:13px;"></div>
                     <div class="moss-blob" style="width:28px;height:18px;"></div>
@@ -154,21 +141,20 @@
             </div>';
         }
     } else {
-        // Fallback demo products if database empty (4 products as requested)
+        // Demo products with images
         $demoProducts = [
-            ['name' => 'Product 1', 'category' => 'Zen Stack', 'price' => 1499, 'image' => ''],
-            ['name' => 'Product 2', 'category' => 'Shrine Garden', 'price' => 1899, 'image' => ''],
-            ['name' => 'Product 3', 'category' => 'Monk Series', 'price' => 2299, 'image' => ''],
-            ['name' => 'Product 4', 'category' => 'Bonsai Collection', 'price' => 1699, 'image' => '']
+            ['name' => 'Product 1', 'category' => 'Zen Stack', 'price' => 1499, 'image' => 'img/Image1.png'],
+            ['name' => 'Product 2', 'category' => 'Shrine Garden', 'price' => 1899, 'image' => 'img/Image2.png'],
+            ['name' => 'Product 3', 'category' => 'Monk Series', 'price' => 2299, 'image' => 'img/Image3.png'],
+            ['name' => 'Product 4', 'category' => 'Bonsai Collection', 'price' => 1699, 'image' => 'img/Image4.png']
         ];
         foreach ($demoProducts as $p) {
-            $cat = $p['category'];
-            $visualHtml = isset($visuals[$cat]) ? $visuals[$cat] : '<div class="pv-monk">🪨</div>';
+            $imgHtml = '<img src="' . htmlspecialchars($p['image']) . '" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" alt="' . htmlspecialchars($p['name']) . '">';
             echo '
             <div class="product-card fade-in">
               <div class="product-card-inner">
                 <div class="product-visual">
-                  ' . $visualHtml . '
+                  ' . $imgHtml . '
                   <div class="product-moss">
                     <div class="moss-blob" style="width:20px;height:13px;"></div>
                     <div class="moss-blob" style="width:28px;height:18px;"></div>
@@ -215,7 +201,7 @@
   <h2 class="section-title fade-in">From Earth<br><em>To Your Space</em></h2>
   <div class="process-grid">
     <div class="process-step fade-in">
-      <div class="step-num">01</div>
+      <div class="step-num">01</div>  
       <div class="step-icon">🪨</div>
       <div class="step-title">Stone Selection</div>
       <p class="step-desc">We hand-pick natural river stones and slate, chosen for their shape, texture, and balance.</p>
