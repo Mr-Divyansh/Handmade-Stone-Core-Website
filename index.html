@@ -257,12 +257,7 @@
   <div class="footer-bottom-text">© 2025 StoneCore. All rights reserved.</div>
   <div class="footer-bottom-text">Handcrafted with ♥ in India</div>
 </div>
-
 <script>
-// ============================================================
-// PRODUCTS DATA — Edit here to update products on website
-// No PHP needed — works on Netlify & any static host
-// ============================================================
 const PRODUCTS = [
   {
     id: 1,
@@ -270,7 +265,7 @@ const PRODUCTS = [
     category: 'Zen Stack',
     price: 1899,
     description: 'A beautifully handcrafted miniature Zen garden diorama featuring natural stones, moss, and bonsai — perfect for desk or shelf decor.',
-    image: 'img/product1/main.jpg',
+    image: 'Product/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones 1.png',
     fallback: 'img/Image1.png'
   },
   {
@@ -279,7 +274,7 @@ const PRODUCTS = [
     category: 'Bridge Series',
     price: 2299,
     description: 'A handcrafted stone bridge garden with natural river stones, miniature shrine, and lush green moss. Brings harmony to any space.',
-    image: 'img/product2/main.jpg',
+    image: 'Product/Harmony Bridge Zen Garden – Handcrafted Miniature Bonsai Diorama/Harmony Bridge Zen Garden – Handcrafted Miniature Bonsai Diorama 1.png',
     fallback: 'img/Image2.png'
   },
   {
@@ -288,7 +283,7 @@ const PRODUCTS = [
     category: 'Monk Series',
     price: 2499,
     description: 'A serene handcrafted monk bonsai garden with a meditating monk figurine surrounded by natural stones and bonsai branches.',
-    image: 'img/product3/main.jpg',
+    image: 'Product/Serene Monk Bonsai Garden – Handcrafted Miniature Zen Diorama/Serene Monk Bonsai Garden – Handcrafted Miniature Zen Diorama 1.png',
     fallback: 'img/Image3.png'
   },
   {
@@ -297,7 +292,7 @@ const PRODUCTS = [
     category: 'Bonsai Collection',
     price: 1999,
     description: 'A peaceful stone lantern retreat with miniature bonsai, natural slate stones, and a glowing lantern centerpiece.',
-    image: 'img/product4/main.jpg',
+    image: 'Product/Stone Lantern Bonsai Retreat/Stone Lantern Bonsai Retreat 1.png',
     fallback: 'img/Image4.png'
   },
   {
@@ -306,7 +301,7 @@ const PRODUCTS = [
     category: 'Bonsai Collection',
     price: 2199,
     description: 'A miniature bonsai sanctuary with whispering bamboo-style trees, stacked stones, and delicate moss arrangements.',
-    image: 'img/product5/main.jpg',
+    image: 'Product/Whispering Bonsai Sanctuary – Miniature Zen Garden with Apple Perch/Whispering Bonsai Sanctuary – Miniature Zen Garden with Apple Perch 1.png',
     fallback: 'img/Image2.png'
   },
   {
@@ -315,7 +310,7 @@ const PRODUCTS = [
     category: 'Monk Series',
     price: 1799,
     description: 'A handcrafted Zen garden featuring a whispering monk figurine, natural river stones, and miniature bonsai in perfect balance.',
-    image: 'img/product6/main.jpg',
+    image: 'Product/Whispering Monk Zen Garden/Whispering Monk Zen Garden1.png',
     fallback: 'img/Image4.png'
   }
 ];
@@ -380,9 +375,6 @@ fetch('Php/Products.php')
     renderProducts(PRODUCTS);
   });
 
-// ============================================================
-// SCROLL EFFECTS + FADE-IN
-// ============================================================
 const fadeEls = document.querySelectorAll('.fade-in');
 const io = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
@@ -422,9 +414,6 @@ if (cursor && cursorRing) {
   });
 }
 
-// ============================================================
-// HAMBURGER MENU
-// ============================================================
 const hamburger = document.getElementById('hamburger');
 const mobileNav = document.getElementById('mobileNav');
 const mobileLinks = document.querySelectorAll('.mobile-link');
