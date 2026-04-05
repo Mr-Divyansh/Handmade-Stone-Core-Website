@@ -10,9 +10,9 @@
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
 }
 
 html {
@@ -72,9 +72,6 @@ nav {
   color: var(--red);
 }
 
-/* ============================================================
-   HERO
-   ============================================================ */
 .hero {
   height: 100vh;
   display: grid;
@@ -163,7 +160,6 @@ nav {
   transform: translateX(6px);
 }
 
-/* Hero Right */
 .hero-right {
   position: relative;
   background: var(--cream);
@@ -216,9 +212,6 @@ nav {
   display: block;
 }
 
-/* ============================================================
-   MARQUEE
-   ============================================================ */
 .marquee-bar {
   background: var(--stone);
   padding: 16px 0;
@@ -250,9 +243,6 @@ nav {
   100% { transform: translateX(-50%); }
 }
 
-/* ============================================================
-   SECTION GLOBALS
-   ============================================================ */
 section {
   position: relative;
 }
@@ -290,9 +280,6 @@ section {
   color: var(--clay);
 }
 
-/* ============================================================
-   ABOUT
-   ============================================================ */
 .about {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -369,9 +356,6 @@ section {
   margin-top: 4px;
 }
 
-/* ============================================================
-   PRODUCTS
-   ============================================================ */
 .products {
   padding: 120px 80px;
   background: var(--white);
@@ -401,7 +385,6 @@ section {
   border-color: var(--red);
 }
 
-/* Loading state */
 .products-loading {
   grid-column: 1 / -1;
   text-align: center;
@@ -414,21 +397,18 @@ section {
   opacity: 0.6;
 }
 
-/* Grid — 3 columns on desktop, 2 on tablet, 1 on mobile */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2px;
 }
 
-/* Product Card */
 .product-card {
   position: relative;
   background: var(--cream);
   overflow: hidden;
 }
 
-/* Aspect ratio trick */
 .product-card::before {
   content: '';
   display: block;
@@ -449,7 +429,6 @@ section {
   background: rgba(44, 40, 37, 0.04);
 }
 
-/* Product image container — FIXED */
 .product-visual {
   flex: 1;
   position: relative;
@@ -492,7 +471,6 @@ section {
   opacity: 0.5;
 }
 
-/* Product Info */
 .product-info {
   border-top: 1px solid var(--sand);
   padding-top: 20px;
@@ -546,9 +524,6 @@ section {
   background: var(--red);
 }
 
-/* ============================================================
-   FEATURED BANNER
-   ============================================================ */
 .featured-banner {
   background: var(--stone);
   padding: 100px 80px;
@@ -595,7 +570,6 @@ section {
   justify-content: center;
 }
 
-/* Featured circle — FIXED to show real image */
 .featured-circle {
   width: 280px;
   height: 280px;
@@ -640,9 +614,6 @@ section {
   to { transform: rotate(360deg); }
 }
 
-/* ============================================================
-   PROCESS
-   ============================================================ */
 .process {
   padding: 120px 80px;
   background: var(--cream);
@@ -687,9 +658,6 @@ section {
   color: var(--clay);
 }
 
-/* ============================================================
-   TESTIMONIALS
-   ============================================================ */
 .testimonials {
   padding: 120px 80px;
   background: var(--white);
@@ -741,9 +709,6 @@ section {
   margin-bottom: 16px;
 }
 
-/* ============================================================
-   NEWSLETTER
-   ============================================================ */
 .newsletter {
   background: var(--red);
   padding: 80px;
@@ -803,9 +768,6 @@ section {
   background: var(--cream);
 }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
 footer {
   background: var(--stone);
   padding: 80px;
@@ -898,9 +860,6 @@ footer {
   text-transform: uppercase;
 }
 
-/* ============================================================
-   FADE IN ANIMATION
-   ============================================================ */
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
@@ -912,9 +871,6 @@ footer {
   transform: translateY(0);
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
 @media (max-width: 1100px) {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1039,10 +995,7 @@ footer {
     height: 220px;
   }
 }
-/* ============================================================
-   ============================================================ */
 
-/* Hamburger button — hidden on desktop */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -1066,7 +1019,6 @@ footer {
   transform-origin: center;
 }
 
-/* X animation when open */
 .hamburger.open span:nth-child(1) {
   transform: translateY(6.5px) rotate(45deg);
 }
@@ -1078,7 +1030,6 @@ footer {
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
-/* Mobile nav drawer */
 .mobile-nav {
   display: none;
   position: fixed;
@@ -1161,7 +1112,6 @@ footer {
   opacity: 1;
 }
 
-/* Show hamburger + mobile nav only on mobile */
 @media (max-width: 900px) {
   .hamburger {
     display: flex;
@@ -1171,7 +1121,6 @@ footer {
     display: flex;
   }
 
-  /* Lock body scroll when menu open */
   body.nav-open {
     overflow: hidden;
   }

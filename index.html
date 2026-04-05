@@ -329,7 +329,7 @@ function renderProducts(products) {
   }
 
   grid.innerHTML = products.map(p => `
-    <div class="product-card fade-in">
+    <div class="product-card fade-in" onclick="window.location='product-detail.html?id=${p.id}'" style="cursor:pointer;">
       <div class="product-card-inner">
         <div class="product-visual">
           <img
@@ -349,7 +349,7 @@ function renderProducts(products) {
           <div class="product-name">${p.name}</div>
           <div class="product-price">
             <span>₹ ${p.price.toLocaleString('en-IN')}</span>
-            <button class="product-add" onclick="handleAddToCart(${p.id})">+</button>
+            <button class="product-add" onclick="event.stopPropagation();window.location='product-detail.html?id=${p.id}'">→</button>
           </div>
         </div>
       </div>
