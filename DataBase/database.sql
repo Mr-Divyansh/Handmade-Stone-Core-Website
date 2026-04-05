@@ -1,8 +1,3 @@
--- ============================================
--- StoneCore Database
--- Import this file in phpMyAdmin
--- ============================================
-
 CREATE DATABASE IF NOT EXISTS stonecore_db;
 USE stonecore_db;
 
@@ -17,15 +12,10 @@ CREATE TABLE IF NOT EXISTS products (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Clear old data
 TRUNCATE TABLE products;
 
--- ============================================
--- 6 Products — Full Data
--- ============================================
 INSERT INTO products (name, category, price, description, image) VALUES
 
--- Product 1: Handcrafted Miniature Zen Garden Diorama
 (
   'Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones',
   'Zen Stack',
@@ -34,7 +24,6 @@ INSERT INTO products (name, category, price, description, image) VALUES
   'img/product1/main.jpg'
 ),
 
--- Product 2: Harmony Bridge Zen Garden
 (
   'Harmony Bridge Zen Garden – Handcrafted Miniature Bonsai Diorama',
   'Bridge Series',
@@ -43,7 +32,6 @@ INSERT INTO products (name, category, price, description, image) VALUES
   'img/product2/main.jpg'
 ),
 
--- Product 3: Serene Monk Bonsai Garden
 (
   'Serene Monk Bonsai Garden – Handcrafted Miniature Zen Diorama',
   'Monk Series',
@@ -52,7 +40,6 @@ INSERT INTO products (name, category, price, description, image) VALUES
   'img/product3/main.jpg'
 ),
 
--- Product 4: Stone Lantern Bonsai Retreat
 (
   'Stone Lantern Bonsai Retreat',
   'Bonsai Collection',
@@ -61,7 +48,6 @@ INSERT INTO products (name, category, price, description, image) VALUES
   'img/product4/main.jpg'
 ),
 
--- Product 5: Whispering Bonsai Sanctuary
 (
   'Whispering Bonsai Sanctuary – Miniature Zen Garden with Apple Perch',
   'Bonsai Collection',
@@ -70,7 +56,6 @@ INSERT INTO products (name, category, price, description, image) VALUES
   'img/product5/main.jpg'
 ),
 
--- Product 6: Whispering Monk Zen Garden
 (
   'Whispering Monk Zen Garden',
   'Monk Series',
@@ -78,8 +63,3 @@ INSERT INTO products (name, category, price, description, image) VALUES
   'The Whispering Monk Zen Garden is a one-of-a-kind handmade decor piece inspired by traditional Japanese Zen landscapes. Carefully arranged using layered natural stones, moss details, two handcrafted bonsai-style trees, and a small red shrine, this sculpture creates a miniature world of peace and stillness. At the center of the scene sits a smiling monk figurine dressed in blue, symbolizing calm, joy, and inner balance. A small stone staircase leads toward the shrine, while smooth standing rocks and detailed greenery complete the natural look. Every piece is individually handmade, which means no two gardens are exactly alike. Perfect for decorating living rooms, office desks, meditation corners, shelves, cafes, or gift collections.',
   'img/product6/main.jpg'
 );
-
--- ============================================
--- Verify inserted data
--- ============================================
--- SELECT * FROM products;
