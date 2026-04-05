@@ -382,29 +382,62 @@ nav {
 }
 
 .related-section {
-  margin-top: 40px;
-  padding-top: 40px;
+  margin-top: 80px;
+  padding-top: 60px;
   border-top: 1px solid var(--sand);
 }
 
 .related-title {
   font-family: 'Cinzel', serif;
-  font-size: 18px;
+  font-size: 24px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 48px;
   text-align: center;
+  color: var(--stone);
+  position: relative;
+}
+
+.related-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--red);
+  margin: 16px auto 0;
 }
 
 .related-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 30px;
+  margin-top: 20px;
+  margin: 15px;
 }
 
 .related-card {
   text-decoration: none;
   color: var(--stone);
+  background: var(--white);
+  transition: all 0.4s ease;
+  display: block;
+  border: 1px solid var(--sand);
+  overflow: hidden;
+  padding: 0;
+}
+
+.related-card h4 {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 20px 20px 8px;
+  line-height: 1.4;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.related-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-color: var(--red);
 }
 
 .related-card img {
@@ -412,19 +445,33 @@ nav {
   aspect-ratio: 1;
   object-fit: cover;
   background: var(--cream);
+  transition: transform 0.5s ease;
+}
+
+.related-card:hover img {
+  transform: scale(1.05);
 }
 
 .related-card h4 {
-  font-size: 14px;
-  margin-top: 12px;
-  font-weight: 400;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 20px 20px 8px;
+  line-height: 1.4;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .related-price {
-  font-size: 13px;
+  font-size: 16px;
   color: var(--red);
-  margin-top: 4px;
+  margin: 0 20px 20px;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
 }
+
+.related-card::before {
+  display: none;
+}
+
 
 @media (max-width: 900px) {
   nav {
@@ -444,8 +491,20 @@ nav {
   }
   
   .related-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;  /* ← mobile pe bhi gap */
+  }
+
+  .related-title {
+    font-size: 20px;
+  }
+}
+
+
+@media (max-width: 540px) {
+  .related-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 30px;
   }
 }
 
