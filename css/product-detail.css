@@ -10,12 +10,14 @@
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background: var(--white);
@@ -27,13 +29,15 @@ body {
 
 nav {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 28px 60px;
-  background: rgba(253,250,245,0.95);
+  background: rgba(253, 250, 245, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--sand);
 }
@@ -133,7 +137,6 @@ nav {
   padding: 60px 72px 80px;
   display: flex;
   flex-direction: column;
-  gap: 0;
   overflow-y: auto;
 }
 
@@ -172,6 +175,7 @@ nav {
   align-items: center;
   gap: 12px;
 }
+
 .product-category::before {
   content: '';
   width: 24px;
@@ -289,7 +293,6 @@ nav {
   background: var(--cream);
   padding: 36px;
   border-left: 3px solid var(--red);
-  margin-bottom: 0;
 }
 
 .enquiry-title {
@@ -429,6 +432,46 @@ nav {
   font-size: 16px;
 }
 
+.not-found {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.not-found-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--stone);
+  margin-bottom: 16px;
+}
+
+.not-found-sub {
+  font-size: 14px;
+  color: var(--clay);
+  margin-bottom: 32px;
+}
+
+.btn-back {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  background: var(--stone);
+  color: var(--cream);
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn-back:hover {
+  background: var(--red);
+}
+
 @media (max-width: 900px) {
   nav {
     padding: 20px 24px;
@@ -472,44 +515,4 @@ nav {
   .enquiry-section {
     padding: 24px 20px;
   }
-}
-
-.not-found {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 40px;
-}
-
-.not-found-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 48px;
-  font-weight: 300;
-  color: var(--stone);
-  margin-bottom: 16px;
-}
-
-.not-found-sub {
-  font-size: 14px;
-  color: var(--clay);
-  margin-bottom: 32px;
-}
-
-.btn-back {
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  padding: 16px 36px;
-  background: var(--stone);
-  color: var(--cream);
-  text-decoration: none;
-  transition: background 0.3s;
-}
-
-.btn-back:hover {
-  background: var(--red);
 }
