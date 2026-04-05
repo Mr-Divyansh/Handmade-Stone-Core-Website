@@ -14,7 +14,7 @@
 <div class="cursor-ring" id="cursorRing"></div>
 
 <!-- NAV -->
-<nav>
+<nav id="mainNav">
   <a href="#" class="logo">Stone<span>Core</span></a>
   <ul class="nav-links">
     <li><a href="#products">Collection</a></li>
@@ -43,8 +43,11 @@
     <div class="hero-bg-text">Stone core</div>
     <div class="hero-visual">
       <div class="hero-img">
-        <div class="hero-img1"><img src="img/Image2.png" alt="Img 1"></div>
+        <div class="hero-img1">
+          <img src="img/product6/main.jpg" alt="StoneCore Zen Garden" onerror="this.src='img/Image2.png'">
+        </div>
       </div>
+    </div>
   </div>
 </section>
 
@@ -68,10 +71,10 @@
 
 <!-- ABOUT -->
 <section class="about" id="about">
-<div class="about-visual">
-  <div class="about-pattern"></div>
-  <img class="about-page-image" src="img/Image2.png" alt="About Page Image">
-</div>
+  <div class="about-visual">
+    <div class="about-pattern"></div>
+    <img class="about-page-image" src="img/product4/main.jpg" alt="About StoneCore" onerror="this.src='img/Image2.png'">
+  </div>
   <div class="about-content">
     <div class="section-label fade-in">Our Story</div>
     <h2 class="section-title fade-in">Craft Born From<br><em>Ancient Stillness</em></h2>
@@ -95,7 +98,7 @@
   </div>
 </section>
 
-<!-- PRODUCTS SECTION - DYNAMIC FROM PHP -->
+<!-- PRODUCTS SECTION — JS Loaded -->
 <section class="products" id="products">
   <div class="products-header">
     <div>
@@ -104,77 +107,9 @@
     </div>
     <a href="#" class="view-all fade-in">View All →</a>
   </div>
-
-  <div class="products-grid">
-    <?php
-    // Include database config and fetch products
-    require_once 'Php/Config.php';
-    $result = $conn->query("SELECT * FROM products ORDER BY created_at DESC LIMIT 4");
-    
-    if ($result && $result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            // Use image if exists
-            $imgHtml = '';
-            if (!empty($row['image']) && file_exists($row['image'])) {
-                $imgHtml = '<img src="' . htmlspecialchars($row['image']) . '" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" alt="' . htmlspecialchars($row['name']) . '">';
-            }
-            echo '
-            <div class="product-card fade-in">
-              <div class="product-card-inner">
-                <div class="product-visual">
-                  ' . $imgHtml . '
-                  <div class="product-moss">
-                    <div class="moss-blob" style="width:20px;height:13px;"></div>
-                    <div class="moss-blob" style="width:28px;height:18px;"></div>
-                    <div class="moss-blob" style="width:15px;height:10px;"></div>
-                  </div>
-                </div>
-                <div class="product-info">
-                  <div class="product-cat">' . htmlspecialchars($row['category']) . '</div>
-                  <div class="product-name">' . htmlspecialchars($row['name']) . '</div>
-                  <div class="product-price">
-                    <span>₹ ' . number_format($row['price'], 0) . '</span>
-                    <button class="product-add">+</button>
-                  </div>
-                </div>
-              </div>
-            </div>';
-        }
-    } else {
-        // Demo products with images
-        $demoProducts = [
-            ['name' => 'Product 1', 'category' => 'Zen Stack', 'price' => 1499, 'image' => 'img/Image1.png'],
-            ['name' => 'Product 2', 'category' => 'Shrine Garden', 'price' => 1899, 'image' => 'img/Image2.png'],
-            ['name' => 'Product 3', 'category' => 'Monk Series', 'price' => 2299, 'image' => 'img/Image3.png'],
-            ['name' => 'Product 4', 'category' => 'Bonsai Collection', 'price' => 1699, 'image' => 'img/Image4.png']
-        ];
-        foreach ($demoProducts as $p) {
-            $imgHtml = '<img src="' . htmlspecialchars($p['image']) . '" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" alt="' . htmlspecialchars($p['name']) . '">';
-            echo '
-            <div class="product-card fade-in">
-              <div class="product-card-inner">
-                <div class="product-visual">
-                  ' . $imgHtml . '
-                  <div class="product-moss">
-                    <div class="moss-blob" style="width:20px;height:13px;"></div>
-                    <div class="moss-blob" style="width:28px;height:18px;"></div>
-                    <div class="moss-blob" style="width:15px;height:10px;"></div>
-                  </div>
-                </div>
-                <div class="product-info">
-                  <div class="product-cat">' . htmlspecialchars($p['category']) . '</div>
-                  <div class="product-name">' . htmlspecialchars($p['name']) . '</div>
-                  <div class="product-price">
-                    <span>₹ ' . $p['price'] . '</span>
-                    <button class="product-add">+</button>
-                  </div>
-                </div>
-              </div>
-            </div>';
-        }
-    }
-    $conn->close();
-    ?>
+  <div class="products-grid" id="productsGrid">
+    <!-- Products injected by JS -->
+    <div class="products-loading">Loading collection...</div>
   </div>
 </section>
 
@@ -186,11 +121,11 @@
     <p class="featured-body">
       Our most loved piece — the Monk Meditation Garden — combines stacked slate, red shrine, bonsai, and a hand-painted monk figurine into one moment of pure stillness. Ships across India.
     </p>
-    <a href="#" class="btn-outline">Shop Now →</a>
+    <a href="#products" class="btn-outline">Shop Now →</a>
   </div>
   <div class="featured-visual">
     <div class="featured-circle">
-      <img src="img/Image4.png" alt="">
+      <img src="img/product6/main.jpg" alt="Bestseller Zen Garden" onerror="this.src='img/Image4.png'">
     </div>
   </div>
 </section>
@@ -201,7 +136,7 @@
   <h2 class="section-title fade-in">From Earth<br><em>To Your Space</em></h2>
   <div class="process-grid">
     <div class="process-step fade-in">
-      <div class="step-num">01</div>  
+      <div class="step-num">01</div>
       <div class="step-icon">🪨</div>
       <div class="step-title">Stone Selection</div>
       <p class="step-desc">We hand-pick natural river stones and slate, chosen for their shape, texture, and balance.</p>
@@ -307,31 +242,169 @@
   <div class="footer-bottom-text">Handcrafted with ♥ in India</div>
 </div>
 
-<!-- simple JS for scroll effects + fade-in -->
 <script>
-    const fadeEls = document.querySelectorAll('.fade-in');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 80);
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    fadeEls.forEach(el => io.observe(el));
-   
-    window.addEventListener('scroll', () => {
-      const nav = document.querySelector('nav');
-      if (window.scrollY > 60) {
-        nav.style.background = 'rgba(25 3,250,245,0.95)';
-        nav.style.backdropFilter = 'blur(12px)';
-        nav.style.boxShadow = '0 1px 20px rgba(0,0,0,0.06)';
-      } else {
-        nav.style.background = 'transparent';
-        nav.style.backdropFilter = 'none';
-        nav.style.boxShadow = 'none';
-      }
-    });
+// ============================================================
+// PRODUCTS DATA — Edit here to update products on website
+// No PHP needed — works on Netlify & any static host
+// ============================================================
+const PRODUCTS = [
+  {
+    id: 1,
+    name: 'Handcrafted Miniature Zen Garden Diorama',
+    category: 'Zen Stack',
+    price: 1899,
+    description: 'A beautifully handcrafted miniature Zen garden diorama featuring natural stones, moss, and bonsai — perfect for desk or shelf decor.',
+    image: 'img/product1/main.jpg',
+    fallback: 'img/Image1.png'
+  },
+  {
+    id: 2,
+    name: 'Harmony Bridge Zen Garden',
+    category: 'Bridge Series',
+    price: 2299,
+    description: 'A handcrafted stone bridge garden with natural river stones, miniature shrine, and lush green moss. Brings harmony to any space.',
+    image: 'img/product2/main.jpg',
+    fallback: 'img/Image2.png'
+  },
+  {
+    id: 3,
+    name: 'Serene Monk Bonsai Garden',
+    category: 'Monk Series',
+    price: 2499,
+    description: 'A serene handcrafted monk bonsai garden with a meditating monk figurine surrounded by natural stones and bonsai branches.',
+    image: 'img/product3/main.jpg',
+    fallback: 'img/Image3.png'
+  },
+  {
+    id: 4,
+    name: 'Stone Lantern Bonsai Retreat',
+    category: 'Bonsai Collection',
+    price: 1999,
+    description: 'A peaceful stone lantern retreat with miniature bonsai, natural slate stones, and a glowing lantern centerpiece.',
+    image: 'img/product4/main.jpg',
+    fallback: 'img/Image4.png'
+  },
+  {
+    id: 5,
+    name: 'Whispering Bonsai Sanctuary',
+    category: 'Bonsai Collection',
+    price: 2199,
+    description: 'A miniature bonsai sanctuary with whispering bamboo-style trees, stacked stones, and delicate moss arrangements.',
+    image: 'img/product5/main.jpg',
+    fallback: 'img/Image2.png'
+  },
+  {
+    id: 6,
+    name: 'Whispering Monk Zen Garden',
+    category: 'Monk Series',
+    price: 1799,
+    description: 'A handcrafted Zen garden featuring a whispering monk figurine, natural river stones, and miniature bonsai in perfect balance.',
+    image: 'img/product6/main.jpg',
+    fallback: 'img/Image4.png'
+  }
+];
+
+// Render products into grid
+function renderProducts(products) {
+  const grid = document.getElementById('productsGrid');
+  if (!products || products.length === 0) {
+    grid.innerHTML = '<p style="color:#888;text-align:center;">No products found.</p>';
+    return;
+  }
+
+  grid.innerHTML = products.map(p => `
+    <div class="product-card fade-in">
+      <div class="product-card-inner">
+        <div class="product-visual">
+          <img
+            src="${p.image}"
+            alt="${p.name}"
+            style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"
+            onerror="this.src='${p.fallback || ''}'"
+          >
+          <div class="product-moss">
+            <div class="moss-blob" style="width:20px;height:13px;"></div>
+            <div class="moss-blob" style="width:28px;height:18px;"></div>
+            <div class="moss-blob" style="width:15px;height:10px;"></div>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-cat">${p.category}</div>
+          <div class="product-name">${p.name}</div>
+          <div class="product-price">
+            <span>₹ ${p.price.toLocaleString('en-IN')}</span>
+            <button class="product-add" onclick="handleAddToCart(${p.id})">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // Re-observe new fade-in elements
+  document.querySelectorAll('#productsGrid .fade-in').forEach(el => io.observe(el));
+}
+
+function handleAddToCart(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (p) alert(`"${p.name}" added! We'll contact you to confirm your order.`);
+}
+
+// Try to load from PHP API — fallback to static data if on Netlify/static host
+fetch('Php/Products.php')
+  .then(res => {
+    if (!res.ok) throw new Error('PHP not available');
+    return res.json();
+  })
+  .then(data => {
+    const products = data.products || data;
+    renderProducts(Array.isArray(products) ? products : PRODUCTS);
+  })
+  .catch(() => {
+    // Netlify / static host — use hardcoded JS data
+    renderProducts(PRODUCTS);
+  });
+
+// ============================================================
+// SCROLL EFFECTS + FADE-IN
+// ============================================================
+const fadeEls = document.querySelectorAll('.fade-in');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+fadeEls.forEach(el => io.observe(el));
+
+// Nav scroll effect — FIXED color value
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 60) {
+    nav.style.background = 'rgba(253, 250, 245, 0.95)';
+    nav.style.backdropFilter = 'blur(12px)';
+    nav.style.boxShadow = '0 1px 20px rgba(0,0,0,0.06)';
+  } else {
+    nav.style.background = 'transparent';
+    nav.style.backdropFilter = 'none';
+    nav.style.boxShadow = 'none';
+  }
+});
+
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+if (cursor && cursorRing) {
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    setTimeout(() => {
+      cursorRing.style.left = e.clientX + 'px';
+      cursorRing.style.top = e.clientY + 'px';
+    }, 80);
+  });
+}
 </script>
 </body>
 </html>
