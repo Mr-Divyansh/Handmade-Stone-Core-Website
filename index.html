@@ -8,12 +8,6 @@
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
-<!-- Custom cursor -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- NAV -->
 <nav id="mainNav">
   <a href="#" class="logo">Stone<span>Core</span></a>
   <ul class="nav-links">
@@ -29,7 +23,6 @@
   </button>
 </nav>
 
-<!-- MOBILE NAV DRAWER -->
 <div class="mobile-nav" id="mobileNav" aria-hidden="true">
   <ul class="mobile-nav-links">
     <li><a href="#products" class="mobile-link">Collection</a></li>
@@ -40,7 +33,6 @@
   <div class="mobile-nav-footer">Stone<span style="color:var(--red)">Core</span> &nbsp;◆&nbsp; Handcrafted Zen Decor</div>
 </div>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">Handcrafted Zen Decor</div>
@@ -67,7 +59,6 @@
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee-bar">
   <div class="marquee-track">
     <span class="marquee-item">Handcrafted</span><span class="marquee-dot">◆</span>
@@ -85,7 +76,6 @@
   </div>
 </div>
 
-<!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-visual">
     <div class="about-pattern"></div>
@@ -114,7 +104,6 @@
   </div>
 </section>
 
-<!-- PRODUCTS SECTION — JS Loaded -->
 <section class="products" id="products">
   <div class="products-header">
     <div>
@@ -124,12 +113,10 @@
     <a href="#" class="view-all fade-in">View All →</a>
   </div>
   <div class="products-grid" id="productsGrid">
-    <!-- Products injected by JS -->
     <div class="products-loading">Loading collection...</div>
   </div>
 </section>
 
-<!-- FEATURED BANNER -->
 <section class="featured-banner">
   <div>
     <div class="section-label" style="color:rgba(212,196,176,0.6);">Featured</div>
@@ -146,7 +133,6 @@
   </div>
 </section>
 
-<!-- PROCESS -->
 <section class="process" id="process">
   <div class="section-label fade-in">How It's Made</div>
   <h2 class="section-title fade-in">From Earth<br><em>To Your Space</em></h2>
@@ -178,7 +164,6 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section class="testimonials">
   <div class="section-label fade-in">Reviews</div>
   <h2 class="section-title fade-in">What Our <em>Customers</em> Say</h2>
@@ -201,7 +186,6 @@
   </div>
 </section>
 
-<!-- NEWSLETTER -->
 <section class="newsletter" id="contact">
   <div>
     <h2 class="newsletter-title">Get 10% Off<br>Your <em>First Order</em></h2>
@@ -212,7 +196,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-brand">
     <a href="#" class="logo">Stone<span>Core</span></a>
@@ -315,7 +298,6 @@ const PRODUCTS = [
   }
 ];
 
-// Render products into grid
 function renderProducts(products) {
   const grid = document.getElementById('productsGrid');
   if (!products || products.length === 0) {
