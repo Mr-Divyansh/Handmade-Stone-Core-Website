@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StoneCore — Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .collection-hero {
+    padding: 160px 80px 80px;
+    background: var(--off-white);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .collection-hero::before {
+    content: 'COLLECTION';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 14vw, 16rem);
+    font-weight: 600;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,169,110,0.07);
+    pointer-events: none;
+    white-space: nowrap;
+    letter-spacing: 0.1em;
+  }
+
+  .collection-hero .section-label {
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .collection-hero .section-label::before { display: none; }
+
+  .collection-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    position: relative;
+  }
+
+  .collection-hero h1 em {
+    font-style: italic;
+    color: var(--accent-gold);
+    font-weight: 300;
+  }
+
+  .collection-hero p {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--stone);
+    margin-top: 20px;
+    position: relative;
+  }
+
+  /* Filter bar */
+  .filter-bar {
+    padding: 32px 80px;
+    background: var(--white);
+    border-bottom: 1px solid var(--sand);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-right: 8px;
+  }
+
+  .filter-btn {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stone);
+    background: transparent;
+    border: 1px solid var(--sand);
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+  }
+
+  /* Products grid */
+  .collection-grid-wrap {
+    padding: 60px 80px 100px;
+    background: var(--white);
+  }
+
+  .collection-count {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 40px;
+  }
+
+  .collection-count span {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  #productsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 0;
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    color: var(--stone);
+    font-style: italic;
+  }
+
+  @media (max-width: 1100px) {
+    .collection-hero { padding: 140px 40px 60px; }
+    .filter-bar { padding: 24px 40px; }
+    .collection-grid-wrap { padding: 48px 40px 80px; }
+    #productsGrid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .collection-hero { padding: 120px 24px 48px; }
+    .filter-bar { padding: 20px 24px; }
+    .collection-grid-wrap { padding: 36px 24px 64px; }
+    #productsGrid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  }
+
+  @media (max-width: 480px) {
+    #productsGrid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav id="mainNav">
+  <a href="index.html" class="logo">Stone<span>Core</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="about.html">Our Craft</a></li>
+    <li><a href="process.html">Process</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <ul class="mobile-nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="about.html">Our Craft</a></li>
+    <li><a href="process.html">Process</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="mobile-nav-footer">Stone<span style="color:var(--accent-gold)">Core</span> &nbsp;◆&nbsp; Handcrafted Zen Decor</div>
+</div>
+
+<!-- HERO -->
+<section class="collection-hero">
+  <div class="section-label fade-in">Our Collection</div>
+  <h1 class="fade-in">Every Piece, a<br><em>Moment of Stillness</em></h1>
+  <p class="fade-in">Handcrafted Zen decor — each one assembled by hand, no two alike.</p>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="Zen Stack">Zen Stack</button>
+  <button class="filter-btn" data-filter="Bridge Series">Bridge Series</button>
+  <button class="filter-btn" data-filter="Monk Series">Monk Series</button>
+  <button class="filter-btn" data-filter="Bonsai Collection">Bonsai Collection</button>
+</div>
+
+<!-- PRODUCTS -->
+<div class="collection-grid-wrap">
+  <div class="collection-count">Showing <span id="countNum">6</span> pieces</div>
+  <div id="productsGrid"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <a href="index.html" class="logo">Stone<span>Core</span></a>
+    <p class="footer-tagline">Bringing Zen into every corner of your world — one handcrafted stone at a time.</p>
+    <div class="footer-social">
+      <a href="#" class="social-link">in</a>
+      <a href="#" class="social-link">ig</a>
+      <a href="#" class="social-link">wa</a>
+      <a href="#" class="social-link">yt</a>
+    </div>
+  </div>
+  <div class="footer-col">
+    <h4>Collection</h4>
+    <ul>
+      <li><a href="collection.html">Zen Stacks</a></li>
+      <li><a href="collection.html">Shrine Gardens</a></li>
+      <li><a href="collection.html">Monk Series</a></li>
+      <li><a href="collection.html">Bonsai Collection</a></li>
+      <li><a href="collection.html">Bridge Series</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Company</h4>
+    <ul>
+      <li><a href="index.html#about">Our Story</a></li>
+      <li><a href="index.html#process">Craftsmanship</a></li>
+      <li><a href="#">Wholesale</a></li>
+      <li><a href="#">Gifting</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Support</h4>
+    <ul>
+      <li><a href="#">Order Tracking</a></li>
+      <li><a href="#">Returns</a></li>
+      <li><a href="#">WhatsApp Us</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="footer-bottom">
+  <div class="footer-bottom-text">© 2025 StoneCore. All rights reserved.</div>
+  <div class="footer-bottom-text">Handcrafted with ♥ in India</div>
+</div>
+
+<script>
+  const PRODUCTS = [
+    { id:1, name:'Handcrafted Miniature Zen Garden Diorama', category:'Zen Stack', price:1899,
+      image:'Product/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones 1.png', fallback:'img/Image1.png' },
+    { id:2, name:'Harmony Bridge Zen Garden', category:'Bridge Series', price:2299,
+      image:'Product/Harmony Bridge Zen Garden \u2013 Handcrafted Miniature Bonsai Diorama/Harmony Bridge Zen Garden \u2013 Handcrafted Miniature Bonsai Diorama 1.png', fallback:'img/Image2.png' },
+    { id:3, name:'Serene Monk Bonsai Garden', category:'Monk Series', price:2499,
+      image:'Product/Serene Monk Bonsai Garden \u2013 Handcrafted Miniature Zen Diorama/Serene Monk Bonsai Garden \u2013 Handcrafted Miniature Zen Diorama 1.png', fallback:'img/Image3.png' },
+    { id:4, name:'Stone Lantern Bonsai Retreat', category:'Bonsai Collection', price:1999,
+      image:'Product/Stone Lantern Bonsai Retreat/Stone Lantern Bonsai Retreat 1.png', fallback:'img/Image4.png' },
+    { id:5, name:'Whispering Bonsai Sanctuary', category:'Bonsai Collection', price:2199,
+      image:'Product/Whispering Bonsai Sanctuary \u2013 Miniature Zen Garden with Apple Perch/Whispering Bonsai Sanctuary \u2013 Miniature Zen Garden with Apple Perch 1.png', fallback:'img/Image2.png' },
+    { id:6, name:'Whispering Monk Zen Garden', category:'Monk Series', price:1799,
+      image:'Product/Whispering Monk Zen Garden/Whispering Monk Zen Garden1.png', fallback:'img/Image4.png' }
+  ];
+
+  let activeFilter = 'all';
+
+  function renderProducts(filter) {
+    const grid = document.getElementById('productsGrid');
+    const countEl = document.getElementById('countNum');
+    const filtered = filter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === filter);
+
+    countEl.textContent = filtered.length;
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '<div class="no-results">No pieces found in this category.</div>';
+      return;
+    }
+
+    grid.innerHTML = filtered.map(p => `
+      <div class="product-card" onclick="window.location='product-detail.html?id=${p.id}'" style="cursor:pointer;">
+        <div class="product-card-inner">
+          <div class="product-visual">
+            <img src="${p.image}" alt="${p.name}" onerror="this.src='${p.fallback}'">
+          </div>
+          <div class="product-info">
+            <div class="product-cat">${p.category}</div>
+            <div class="product-name">${p.name}</div>
+            <div class="product-price">
+              <span>&#8377; ${p.price.toLocaleString('en-IN')}</span>
+              <button class="product-add" onclick="event.stopPropagation()">&#8594;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  renderProducts('all');
+
+  /* Filter buttons */
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      renderProducts(activeFilter);
+    });
+  });
+
+  /* Scroll fade */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  /* Nav scroll */
+  window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* Cursor */
+  const cursor = document.getElementById('cursor');
+  const cursorRing = document.getElementById('cursorRing');
+  if (cursor && cursorRing) {
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      setTimeout(() => {
+        cursorRing.style.left = e.clientX + 'px';
+        cursorRing.style.top = e.clientY + 'px';
+      }, 80);
+    });
+  }
+
+  /* Mobile menu */
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  function closeMenu() {
+    hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded','false');
+    mobileNav.classList.remove('open'); mobileNav.setAttribute('aria-hidden','true');
+    document.body.classList.remove('nav-open');
+  }
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      if (hamburger.classList.contains('open')) { closeMenu(); return; }
+      hamburger.classList.add('open'); hamburger.setAttribute('aria-expanded','true');
+      mobileNav.classList.add('open'); mobileNav.setAttribute('aria-hidden','false');
+      document.body.classList.add('nav-open');
+    });
+  }
+  document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+</script>
+</body>
+</html>

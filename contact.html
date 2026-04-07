@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — StoneCore</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav id="mainNav">
+  <a href="index.html" class="logo">Stone<span>Core</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="about.html">Our Craft</a></li>
+    <li><a href="process.html">Process</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <ul class="mobile-nav-links">
+    <li><a href="collection.html" class="mobile-link">Collection</a></li>
+    <li><a href="about.html" class="mobile-link">Our Craft</a></li>
+    <li><a href="process.html" class="mobile-link">Process</a></li>
+    <li><a href="contact.html" class="mobile-link">Contact</a></li>
+  </ul>
+  <div class="mobile-nav-footer">Stone<span style="color:var(--accent-gold)">Core</span> &nbsp;◆&nbsp; Handcrafted Zen Decor</div>
+</div>
+
+<section class="contact-hero">
+  <div class="contact-hero-inner">
+    <div class="section-label fade-in">Get In Touch</div>
+    <h1 class="contact-hero-title fade-in">
+      Let's Talk<br><em>Stillness</em>
+    </h1>
+    <p class="contact-hero-sub fade-in">
+      Whether you have a question, want a custom order, or just want to say hello — we're here. WhatsApp is the fastest way to reach us.
+    </p>
+  </div>
+</section>
+
+<div class="contact-main">
+
+  <div class="contact-info-col">
+    <div>
+      <div class="section-label fade-in">Reach Us</div>
+      <h2 class="contact-info-title fade-in">Contact<br><em>Information</em></h2>
+    </div>
+
+    <div class="contact-items">
+      <div class="contact-item fade-in">
+        <div class="contact-item-icon">📞</div>
+        <div class="contact-item-text">
+          <div class="contact-item-label">Phone</div>
+          <div class="contact-item-value">+91 98051 45415</div>
+        </div>
+      </div>
+      <div class="contact-item fade-in">
+        <div class="contact-item-icon">✉️</div>
+        <div class="contact-item-text">
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-value">hello@stonecore.in</div>
+        </div>
+      </div>
+      <div class="contact-item fade-in">
+        <div class="contact-item-icon">📍</div>
+        <div class="contact-item-text">
+          <div class="contact-item-label">Studio</div>
+          <div class="contact-item-value">Ships Pan India<br>from our studio</div>
+        </div>
+      </div>
+      <div class="contact-item fade-in">
+        <div class="contact-item-icon">⏰</div>
+        <div class="contact-item-text">
+          <div class="contact-item-label">Hours</div>
+          <div class="contact-item-value">Mon – Sat: 10 AM – 7 PM</div>
+        </div>
+      </div>
+    </div>
+
+    <a href="https://wa.me/919805145415?text=Hi%20StoneCore!%20I%27d%20like%20to%20enquire%20about%20your%20products."
+       class="whatsapp-cta fade-in" target="_blank">
+      <div class="whatsapp-icon">💬</div>
+      <div>
+        <div class="whatsapp-text-label">Fastest Response</div>
+        <div class="whatsapp-text-val">Chat on WhatsApp</div>
+      </div>
+      <div class="whatsapp-arrow">→</div>
+    </a>
+
+    <div class="contact-socials fade-in">
+      <a href="#" class="social-link">in</a>
+      <a href="#" class="social-link">ig</a>
+      <a href="#" class="social-link">wa</a>
+      <a href="#" class="social-link">yt</a>
+    </div>
+  </div>
+
+  <div class="contact-form-col">
+    <div class="section-label fade-in">Send a Message</div>
+    <h2 class="contact-form-title fade-in">We'd Love to<br><em>Hear From You</em></h2>
+    <p class="contact-form-sub fade-in">Fill in the form and we'll get back within 24 hours.</p>
+
+    <form id="stoneContactForm">
+      <input type="hidden" name="access_key" value="ef9b4a7c-5c18-49a2-bf2d-68d8ba5de4a1">
+      <input type="hidden" name="from_name" value="StoneCore Website">
+      
+      <div id="contactFormWrap">
+        <div class="form-row">
+          <div class="form-group fade-in">
+            <label class="form-label">Your Name *</label>
+            <input type="text" name="name" class="form-input" id="cName" placeholder="Rahul Sharma" required>
+          </div>
+          <div class="form-group fade-in">
+            <label class="form-label">Email Address *</label>
+            <input type="email" name="email" class="form-input" id="cEmail" placeholder="rahul@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group fade-in">
+            <label class="form-label">Phone (optional)</label>
+            <input type="tel" name="phone" class="form-input" id="cPhone" placeholder="+91 98765 43210">
+          </div>
+          <div class="form-group fade-in">
+            <label class="form-label">Enquiry Type</label>
+            <select name="subject" class="form-select form-input" id="cType">
+              <option value="">Select...</option>
+              <option>Product Order</option>
+              <option>Custom Order</option>
+              <option>Bulk / Corporate</option>
+              <option>Gifting</option>
+              <option>General Question</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group fade-in">
+          <label class="form-label">Message *</label>
+          <textarea name="message" class="form-textarea" id="cMessage" placeholder="Tell us about your requirement..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit fade-in" id="submitBtn">
+          <span>Send Message →</span>
+        </button>
+      </div>
+    </form>
+
+    <div class="form-success" id="formSuccess">
+      <div class="form-success-icon">🪨</div>
+      <div class="form-success-title">Message Received</div>
+      <p class="form-success-body">
+        Thank you for reaching out! We'll get back to you within 24 hours.<br>
+        For faster response, WhatsApp us directly.
+      </p>
+    </div>
+  </div>
+</div>
+
+<section class="contact-faq-strip">
+  <div class="section-label fade-in">Quick Answers</div>
+  <h2 class="section-title fade-in">Common <em>Questions</em></h2>
+  <div class="faq-strip-grid">
+    <div class="faq-strip-card fade-in">
+      <div class="faq-strip-q">How long does shipping take?</div>
+      <p class="faq-strip-a">4–7 business days across India via courier. You'll receive a tracking link after dispatch.</p>
+    </div>
+    <div class="faq-strip-card fade-in">
+      <div class="faq-strip-q">Can I place a custom order?</div>
+      <p class="faq-strip-a">Yes! WhatsApp us or use the form above. Custom orders take 7–10 days to craft.</p>
+    </div>
+    <div class="faq-strip-card fade-in">
+      <div class="faq-strip-q">Do you do bulk / corporate orders?</div>
+      <p class="faq-strip-a">Absolutely — we offer special pricing for 10+ pieces. Great for Diwali gifting, events, and hotels.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">
+    <a href="index.html" class="logo">Stone<span>Core</span></a>
+    <p class="footer-tagline">Bringing Zen into every corner of your world — one handcrafted stone at a time.</p>
+    <div class="footer-social">
+      <a href="#" class="social-link">in</a>
+      <a href="#" class="social-link">ig</a>
+      <a href="#" class="social-link">wa</a>
+      <a href="#" class="social-link">yt</a>
+    </div>
+  </div>
+  <div class="footer-col">
+    <h4>Collection</h4>
+    <ul>
+      <li><a href="collection.html">Zen Stacks</a></li>
+      <li><a href="collection.html">Shrine Gardens</a></li>
+      <li><a href="collection.html">Monk Series</a></li>
+      <li><a href="collection.html">Bonsai Collection</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Company</h4>
+    <ul>
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="process.html">Craftsmanship</a></li>
+      <li><a href="contact.html">Wholesale</a></li>
+      <li><a href="contact.html">Gifting</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Support</h4>
+    <ul>
+      <li><a href="contact.html">Order Tracking</a></li>
+      <li><a href="contact.html">Returns</a></li>
+      <li><a href="contact.html">WhatsApp Us</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="footer-bottom">
+  <div class="footer-bottom-text">© 2025 StoneCore. All rights reserved.</div>
+  <div class="footer-bottom-text">Handcrafted with ♥ in India</div>
+</div>
+
+<script>
+  /* Web3Forms Submission Logic */
+  const form = document.getElementById('stoneContactForm');
+  const formWrap = document.getElementById('contactFormWrap');
+  const successMsg = document.getElementById('formSuccess');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // UI Update: Show loading state
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.innerHTML = "<span>Sending...</span>";
+    submitBtn.style.opacity = "0.7";
+    submitBtn.style.pointerEvents = "none";
+
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: json
+    })
+    .then(async (response) => {
+      let res = await response.json();
+      if (response.status == 200) {
+        // Success state
+        formWrap.style.display = 'none';
+        successMsg.classList.add('show');
+        window.scrollTo({ 
+          top: successMsg.offsetTop - 120, 
+          behavior: 'smooth' 
+        });
+      } else {
+        // Error state
+        alert(res.message || "Submission failed. Please try again.");
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.style.opacity = "1";
+        submitBtn.style.pointerEvents = "all";
+      }
+    })
+    .catch(error => {
+      console.log(error);
+      alert("Something went wrong. Check your connection.");
+      submitBtn.innerHTML = originalBtnText;
+      submitBtn.style.opacity = "1";
+      submitBtn.style.pointerEvents = "all";
+    });
+  });
+
+  /* Scroll animations */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in, .slide-left, .slide-right').forEach(el => io.observe(el));
+
+  /* Nav */
+  window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* Cursor */
+  const cursor = document.getElementById('cursor');
+  const cursorRing = document.getElementById('cursorRing');
+  if (cursor && cursorRing) {
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      setTimeout(() => {
+        cursorRing.style.left = e.clientX + 'px';
+        cursorRing.style.top = e.clientY + 'px';
+      }, 80);
+    });
+  }
+
+  /* Mobile menu */
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  function closeMenu() {
+    hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded','false');
+    mobileNav.classList.remove('open'); mobileNav.setAttribute('aria-hidden','true');
+    document.body.classList.remove('nav-open');
+  }
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      if (hamburger.classList.contains('open')) { closeMenu(); return; }
+      hamburger.classList.add('open'); hamburger.setAttribute('aria-expanded','true');
+      mobileNav.classList.add('open'); mobileNav.setAttribute('aria-hidden','false');
+      document.body.classList.add('nav-open');
+    });
+  }
+  document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+</script>
+</body>
+</html>
