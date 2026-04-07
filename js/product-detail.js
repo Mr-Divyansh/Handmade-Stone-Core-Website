@@ -145,16 +145,16 @@ const PRODUCTS = [
     name: 'Whispering Bonsai Sanctuary',
     nameEm: 'Whispering Bonsai <em>Sanctuary</em>',
     category: 'Bonsai Collection',
-    price: 2199,
-    originalPrice: 2799,
+    price: 899,
+    originalPrice: 1398,
     rating: 4.8,
     reviews: 98,
     description: 'Step into a quiet world of nature and imagination with this handcrafted miniature Zen garden. A unique highlight is the elevated wooden perch holding a symbolic apple, adding a touch of storytelling and visual charm. The natural moss textures and carefully arranged stones create depth and realism, while the delicate tree branches form a peaceful canopy over the scene.',
     images: [
-      'Product/Whispering Bonsai Sanctuary – Miniature Zen Garden with Apple Perch/Whispering Bonsai Sanctuary – Miniature Zen Garden with Apple Perch 1.png',
-      'Product/Whispering Bonsai Sanctuary – Miniature Zen Garden with Apple Perch/Whispering Bonsai Sanctuary – Miniature Zen Garden with Apple Perch 2.png',
-      'Product/Whispering Bonsai Sanctuary – Miniature Zen Garden with Apple Perch/Whispering Bonsai Sanctuary – Miniature Zen Garden with Apple Perch 3.png',
-      'Product/Whispering Bonsai Sanctuary – Miniature Zen Garden with Apple Perch/Whispering Bonsai Sanctuary – Miniature Zen Garden with Apple Perch 4.png'
+      'img/product/Whispering Bonsai Sanctuary/Whispering Bonsai Sanctuary1.png',
+      'img/product/Whispering Bonsai Sanctuary/Whispering Bonsai Sanctuary2.png',
+      'img/product/Whispering Bonsai Sanctuary/Whispering Bonsai Sanctuary3.png',
+      'img/product/Whispering Bonsai Sanctuary/Whispering Bonsai Sanctuary4.png'
     ],
     fallback: 'img/Image2.png',
     features: [
