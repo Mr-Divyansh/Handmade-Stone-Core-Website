@@ -6,16 +6,16 @@ const PRODUCTS = [
     name: 'Handcrafted Miniature Zen Garden Diorama',
     nameEm: 'Zen Garden <em>Diorama</em>',
     category: 'Zen Stack',
-    price: 1899,
-    originalPrice: 2499,
+    price: 1200,
+    originalPrice: 1789,
     rating: 4.8,
     reviews: 127,
     description: 'Bring peace and natural beauty into your space with this beautifully handcrafted miniature Zen garden. Designed with carefully selected natural stones, detailed bonsai-style trees, and a tiny wooden shrine, this piece captures the essence of a tranquil landscape in a compact form. The realistic textures, moss detailing, and layered stone steps add depth and authenticity, giving it a premium artistic feel. Every piece is handmade — no two are exactly the same.',
     images: [
-      'Product/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones 1.png',
-      'Product/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones 2.png',
-      'Product/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones 3.png',
-      'Product/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones 4.png'
+      'img/product/Handcrafted Miniature Zen Garden Diorama/Zen-Garden-Diorama1.jpeg',
+      'img/product/Handcrafted Miniature Zen Garden Diorama/Zen-Garden-Diorama2.jpeg',
+      'img/product/Handcrafted Miniature Zen Garden Diorama/Zen-Garden-Diorama3.jpeg',
+      'img/product/Handcrafted Miniature Zen Garden Diorama/Zen-Garden-Diorama4.jpeg'
     ],
     fallback: 'img/Image1.png',
     features: [
