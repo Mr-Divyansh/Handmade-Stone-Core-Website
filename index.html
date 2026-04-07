@@ -293,24 +293,73 @@
   <div class="footer-bottom-text">© 2025 StoneCore. All rights reserved.</div>
   <div class="footer-bottom-text">Handcrafted with ♥ in India</div>
 </div>
-
 <script>
-  const PRODUCTS = [
-    { id:1, name:'Handcrafted Miniature Zen Garden Diorama', category:'Zen Stack', price:1899,
-      image:'Product/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones 1.png', fallback:'img/Image1.png' },
-    { id:2, name:'Harmony Bridge Zen Garden', category:'Bridge Series', price:2299,
-      image:'Product/Harmony Bridge Zen Garden – Handcrafted Miniature Bonsai Diorama/Harmony Bridge Zen Garden – Handcrafted Miniature Bonsai Diorama 1.png', fallback:'img/Image2.png' },
-    { id:3, name:'Serene Monk Bonsai Garden', category:'Monk Series', price:2499,
-      image:'Product/Serene Monk Bonsai Garden – Handcrafted Miniature Zen Diorama/Serene Monk Bonsai Garden – Handcrafted Miniature Zen Diorama 1.png', fallback:'img/Image3.png' },
-    { id:4, name:'Stone Lantern Bonsai Retreat', category:'Bonsai Collection', price:1999,
-      image:'Product/Stone Lantern Bonsai Retreat/Stone Lantern Bonsai Retreat 1.png', fallback:'img/Image4.png' },
-    { id:5, name:'Whispering Bonsai Sanctuary', category:'Bonsai Collection', price:2199,
-      image:'Product/Whispering Bonsai Sanctuary – Miniature Zen Garden with Apple Perch/Whispering Bonsai Sanctuary – Miniature Zen Garden with Apple Perch 1.png', fallback:'img/Image2.png' },
-    { id:6, name:'Whispering Monk Zen Garden', category:'Monk Series', price:1799,
-      image:'Product/Whispering Monk Zen Garden/Whispering Monk Zen Garden1.png', fallback:'img/Image4.png' },
-      {id: 7, name: 'hand rock pieace', category: 'Monk Series', price: 299, image: 'img/Product/hand rock pieace/Hand made stone1.png', fallback: 'img/Image4.png'}
-  ];
-
+const PRODUCTS = [
+  {
+    id: 1,
+    name: 'Handcrafted Miniature Zen Garden Diorama',
+    category: 'Zen Stack',
+    price: 1899,
+    image: 'img/product/Handcrafted Miniature Zen Garden Diorama/Zen-Garden-Diorama1.jpeg',
+    fallback: 'img/Image1.png'
+  },
+  {
+    id: 2,
+    name: 'Harmony Bridge Zen Garden',
+    category: 'Bridge Series',
+    price: 2299,
+    image: 'img/product/Harmony Bridge Zen Garden/Harmony Bridge Zen Garden1.png',
+    fallback: 'img/Image2.png'
+  },
+  {
+    id: 3,
+    name: 'Serene Monk Bonsai Garden',
+    category: 'Monk Series',
+    price: 2499,
+    image: 'img/product/Serene Monk Bonsai Garden/Serene Monk Bonsai Garden1.png',
+    fallback: 'img/Image3.png'
+  },
+  {
+    id: 4,
+    name: 'Stone Lantern Bonsai Retreat',
+    category: 'Bonsai Collection',
+    price: 1999,
+    image: 'img/product/Stone Lantern Bonsai Retreat/Stone Lantern Bonsai Retreat1.png',
+    fallback: 'img/Image4.png'
+  },
+  {
+    id: 5,
+    name: 'Whispering Bonsai Sanctuary',
+    category: 'Bonsai Collection',
+    price: 2199,
+    image: 'img/product/Whispering Bonsai Sanctuary/Whispering Bonsai Sanctuary1.png',
+    fallback: 'img/Image2.png'
+  },
+  {
+    id: 6,
+    name: 'Shizendo Monk Garden',
+    category: 'Monk Series',
+    price: 2499,
+    image: 'img/product/Shizendo Monk Garden/Shizendo Monk Garden1.png',
+    fallback: 'img/Image4.png'
+  },
+  {
+    id: 7,
+    name: 'Whispering Monk Zen Garden',
+    category: 'Monk Series',
+    price: 1799,
+    image: 'img/Product/Whispering Monk Zen Garden/Whispering Monk Zen Garden1.png',
+    fallback: 'img/Image4.png'
+  },
+  {
+    id: 8,
+    name: 'hand rock pieace',
+    category: 'Monk Series',
+    price: 300,
+    image: 'img/Product/hand rock pieace/Hand made stone1.png',
+    fallback: 'img/Image4.png'
+  }
+];  
   /* RENDER — no fade-in class on cards, visible immediately */
   function renderProducts(products) {
     const grid = document.getElementById('productsGrid');
