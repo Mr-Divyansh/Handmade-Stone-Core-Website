@@ -175,8 +175,44 @@ const PRODUCTS = [
     },
     inStock: true
   },
-  {
-  id: 6,
+{
+  "id": 6,
+  "name": "Shizendo Monk Garden",
+  "nameEm": "Shizendo Monk <em>Garden</em>",
+  "category": "Premium Zen Collection",
+  "price": 2499,
+  "originalPrice": 1799,
+  "rating": 4.9,
+  "reviews": 88,
+  "description": "Inspired by the tranquility of traditional Japanese 'Shizendo' (Way of Nature) philosophy, this piece is a meticulously crafted world-in-miniature. Featuring layered, ancient-look natural river stones, lush preserved moss, two artisanal bonsai-style trees, and a symbolic red Torii-gate style shrine. At its heart sits our 'Serene Sage' monk figure, sculpted in a deep meditative blue, embodying peace, wisdom, and inner harmony. Every element, from the miniature stone steps to the smooth, standing rocks, is placed with intention, creating a profound sense of natural balance and ancient calm.",
+  "images": [
+    "img/Product/Shizendo Monk Garden/Shizendo Monk Garden1.png",
+    "img/Product/Shizendo Monk Garden/Shizendo Monk Garden2.png",
+    "img/Product/Shizendo Monk Garden/Shizendo Monk Garden3.png",
+    "img/Product/Shizendo Monk Garden/Shizendo Monk Garden4.png",
+    "img/Product/Shizendo Monk Garden/Shizendo Monk Garden5.png"
+  ],
+  "fallback": "img/PremiumImage7.png",
+  "features": [
+    "Deeply meditative monk figure in cobalt blue — wisdom and harmony",
+    "Two premium, dense-foliage bonsai structures",
+    "Torii-gate style shrine with traditional red finish",
+    "Multi-layered river stone formation",
+    "Aged, preserved moss textures for timeless look",
+    "Unique artisan construction — no two pieces are identical"
+  ],
+  "details": {
+    "Material": "Select river stones, slate bedrock base, preserved moss, wood shrine, sculpted polymer monk",
+    "Size": "Approx. 12–14 inches wide (slightly larger feel)",
+    "Finish": "Textured, weathered natural finish",
+    "Color Theme": "Deep earth tones, traditional red, rich cobalt blue, natural greens",
+    "Weight": "Solid, premium feel (approx. 2.5 lbs)",
+    "Customizable": "No, this is a fixed artisan piece"
+  },
+  "inStock": true
+},
+    {
+  id: 7,
   name: 'Whispering Monk Zen Garden',
   nameEm: 'Whispering Monk <em>Zen Garden</em>',
   category: 'Monk Series',
@@ -212,7 +248,7 @@ const PRODUCTS = [
   inStock: true
   },
   {
-  id: 7,
+  id: 8,
   name: 'hand rock pieace',
   nameEm: 'Whispering Monk <em>Zen Garden</em>',
   category: 'Monk Series',
