@@ -41,15 +41,16 @@ const PRODUCTS = [
     name: 'Harmony Bridge Zen Garden',
     nameEm: 'Harmony Bridge <em>Zen Garden</em>',
     category: 'Bridge Series',
-    price: 2299,
-    originalPrice: 2999,
+    price: 899,
+    originalPrice: 1145,
     rating: 4.6,
     reviews: 89,
     description: 'Experience a blend of color, calm, and creativity with this handcrafted miniature Zen garden. The highlight is a beautifully crafted colorful wooden bridge, symbolizing connection and harmony within nature. Paired with layered stone steps, a monk figurine, dense bonsai canopy, and lush moss textures — the scene creates a serene environment that feels both artistic and meaningful.',
     images: [
-      'Product/Harmony Bridge Zen Garden – Handcrafted Miniature Bonsai Diorama/Harmony Bridge Zen Garden – Handcrafted Miniature Bonsai Diorama 1.png',
-      'Product/Harmony Bridge Zen Garden – Handcrafted Miniature Bonsai Diorama/Harmony Bridge Zen Garden – Handcrafted Miniature Bonsai Diorama 2.png',
-      'Product/Harmony Bridge Zen Garden – Handcrafted Miniature Bonsai Diorama/Harmony Bridge Zen Garden – Handcrafted Miniature Bonsai Diorama 3.png',
+      'img/product/Harmony Bridge Zen Garden/Harmony Bridge Zen Garden1.png',
+      'img/product/Harmony Bridge Zen Garden/Harmony Bridge Zen Garden2.png',
+      'img/product/Harmony Bridge Zen Garden/Harmony Bridge Zen Garden3.png',
+      'img/product/Harmony Bridge Zen Garden/Harmony Bridge Zen Garden4.png'
     ],
     fallback: 'img/Image2.png',
     features: [
