@@ -110,16 +110,16 @@ const PRODUCTS = [
     name: 'Stone Lantern Bonsai Retreat',
     nameEm: 'Stone Lantern <em>Bonsai Retreat</em>',
     category: 'Bonsai Collection',
-    price: 1999,
-    originalPrice: 2599,
+    price: 499,
+    originalPrice: 999,
     rating: 4.7,
     reviews: 156,
     description: 'A peaceful stone lantern retreat with miniature bonsai, natural slate stones, and a glowing lantern centerpiece. Two bonsai-style trees flank a detailed miniature red lantern shrine, surrounded by stacked natural river stones and soft moss textures. The tall standing stones create a dramatic backdrop while the layered base adds dimension and depth to the composition.',
     images: [
-      'Product/Stone Lantern Bonsai Retreat/Stone Lantern Bonsai Retreat 1.png',
-      'Product/Stone Lantern Bonsai Retreat/Stone Lantern Bonsai Retreat 2.png',
-      'Product/Stone Lantern Bonsai Retreat/Stone Lantern Bonsai Retreat 3.png',
-      'Product/Stone Lantern Bonsai Retreat/Stone Lantern Bonsai Retreat 4.png'
+      'img/product/Stone Lantern Bonsai Retreat/Serene Monk Bonsai Garden1.png',
+      'img/product/Stone Lantern Bonsai Retreat/Serene Monk Bonsai Garden2.png',
+      'img/product/Stone Lantern Bonsai Retreat/Serene Monk Bonsai Garden3.png',
+      'img/product/Stone Lantern Bonsai Retreat/Serene Monk Bonsai Garden4.png'
     ],
     fallback: 'img/Image4.png',
     features: [
