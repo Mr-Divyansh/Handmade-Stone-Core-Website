@@ -50,7 +50,7 @@ const PRODUCTS = [
       'img/product/Harmony Bridge Zen Garden/Harmony Bridge Zen Garden1.png',
       'img/product/Harmony Bridge Zen Garden/Harmony Bridge Zen Garden2.png',
       'img/product/Harmony Bridge Zen Garden/Harmony Bridge Zen Garden3.png',
-      'img/product/Harmony Bridge Zen Garden/Harmony Bridge Zen Garden4.png'
+      'img/product/Harmony Bridge Zen Garden/Harmony Bridge Zen Garden4.png '
     ],
     fallback: 'img/Image2.png',
     features: [
@@ -76,16 +76,15 @@ const PRODUCTS = [
     name: 'Serene Monk Bonsai Garden',
     nameEm: 'Serene Monk <em>Bonsai Garden</em>',
     category: 'Monk Series',
-    price: 2499,
-    originalPrice: 3199,
+    price: 700,
+    originalPrice: 1230,
     rating: 4.9,
     reviews: 203,
     description: 'A serene handcrafted monk bonsai garden with a meditating monk figurine surrounded by natural stones and bonsai branches. Featuring layered natural stone formations, realistic moss detailing, and carefully shaped miniature bonsai trees — the scene creates a tranquil landscape full of depth and character. The monk figurine sits peacefully at the center, adding a spiritual and mindful energy to any space.',
     images: [
-      'Product/Serene Monk Bonsai Garden – Handcrafted Miniature Zen Diorama/Serene Monk Bonsai Garden – Handcrafted Miniature Zen Diorama 1.png',
-      'Product/Serene Monk Bonsai Garden – Handcrafted Miniature Zen Diorama/Serene Monk Bonsai Garden – Handcrafted Miniature Zen Diorama 2.png',
-      'Product/Serene Monk Bonsai Garden – Handcrafted Miniature Zen Diorama/Serene Monk Bonsai Garden – Handcrafted Miniature Zen Diorama 3.png',
-      'Product/Serene Monk Bonsai Garden – Handcrafted Miniature Zen Diorama/Serene Monk Bonsai Garden – Handcrafted Miniature Zen Diorama 4.png'
+      'img/product/Serene Monk Bonsai Garden/Harmony Bridge Zen Garden1.png',
+      'img/product/Serene Monk Bonsai Garden/Harmony Bridge Zen Garden2.png',
+      'img/product/Serene Monk Bonsai Garden/Harmony Bridge Zen Garden3.png',
     ],
     fallback: 'img/Image3.png',
     features: [
