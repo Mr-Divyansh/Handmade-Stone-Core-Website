@@ -1,0 +1,467 @@
+ .about-hero {
+   min-height: 90vh;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+  padding-top: var(--nav-h);
+  overflow: hidden;
+  position: relative;
+}
+
+.about-hero-left {
+  background: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 80px 80px 80px;
+  position: relative;
+}
+
+.about-hero-left::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 10%; bottom: 10%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--sand), transparent);
+}
+
+.about-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 4.5vw, 5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+
+.about-hero-title em {
+  font-style: italic;
+  color: var(--accent-gold);
+  font-weight: 300;
+}
+
+.about-hero-body {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--stone);
+  max-width: 460px;
+  margin-bottom: 48px;
+}
+
+.about-hero-stats {
+  display: flex;
+  gap: 48px;
+}
+
+.about-hero-right {
+  position: relative;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+.about-hero-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 8s ease;
+}
+
+.about-hero-right:hover img{
+    transform: scale(1.04);
+}
+
+.about-hero-right::before {
+  content: '';
+  position: absolute;
+  bottom: 30px; left: 30px;
+  width: 80px; height: 80px;
+  border-bottom: 1.5px solid var(--accent-gold);
+  border-left: 1.5px solid var(--accent-gold);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.philosophy-strip {
+  background: var(--ink);
+  padding: 60px 80px;
+  display: grid;
+  grid-template-columns: 1fr 2px 1fr 2px 1fr;
+  gap: 0;
+  align-items: center;
+}
+
+  .philosophy-divider {
+    background: rgba(255,255,255,0.08);
+    height: 60px;
+    align-self: center;
+  }
+
+.philosophy-item {
+  padding: 0 48px;
+  text-align: center;
+}
+
+.philosophy-item:first-child {
+    padding-left: 0;
+}
+
+.philosophy-item:last-child {
+    padding-right: 0;
+}
+
+.philosophy-num {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: var(--accent-gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.philosophy-label {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(200,188,176,0.6);
+}
+
+.story-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 580px;
+  overflow: hidden;
+}
+
+.story-visual {
+  position: relative;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+.story-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.story-visual:hover img {
+    transform: scale(1.04);
+}
+
+.story-visual-overlay {
+  position: absolute;
+  bottom: 32px; right: 32px;
+  background: var(--white);
+  border: 1px solid var(--sand);
+  border-radius: 12px;
+  padding: 20px 28px;
+  box-shadow: var(--shadow-md);
+  z-index: 2;
+}
+
+.story-visual-overlay-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--accent-gold);
+  line-height: 1;
+}
+
+.story-visual-overlay-text {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-top: 4px;
+}
+
+.story-content {
+  padding: 80px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--white);
+}
+
+.story-body {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.95;
+  color: var(--stone);
+  margin-bottom: 24px;
+}
+
+.values-section {
+  padding: 100px 80px;
+  background: var(--off-white);
+  text-align: center;
+}
+
+.values-section .section-label {
+    justify-content: center;
+}
+
+.values-section .section-label::before {
+    display: none;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 64px;
+}
+
+.value-card {
+  background: var(--white);
+  border: 1px solid var(--sand);
+  border-radius: 12px;
+  padding: 40px 28px;
+  text-align: center;
+  transition: all 0.35s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(201,169,110,0.4);
+}
+
+.value-icon {
+  font-size: 28px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+  .value-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+  }
+
+  .value-desc {
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--stone);
+  }
+
+  /* ── ARTISAN SECTION ── */
+  .artisan-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 520px;
+    overflow: hidden;
+    background: var(--ink);
+  }
+
+  .artisan-content {
+    padding: 80px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .artisan-content .section-label { color: rgba(201,169,110,0.75); }
+  .artisan-content .section-label::before { background: rgba(201,169,110,0.75); }
+  .artisan-content .section-title { color: var(--sand); }
+
+  .artisan-body {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: rgba(200,188,176,0.65);
+    margin-bottom: 40px;
+    max-width: 440px;
+  }
+
+  .artisan-visual {
+    position: relative;
+    overflow: hidden;
+    background: var(--dark-stone);
+  }
+
+  .artisan-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    transition: all 0.8s ease;
+  }
+
+  .artisan-visual:hover img { opacity: 1; transform: scale(1.04); }
+
+  /* Diagonal overlay */
+  .artisan-visual::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 28%;
+    height: 100%;
+    background: var(--ink);
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+    z-index: 1;
+  }
+
+  /* ── CTA BANNER ── */
+  .about-cta {
+    padding: 100px 80px;
+    background: var(--cream);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-cta::before {
+    content: 'ZEN';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: clamp(8rem, 18vw, 20rem);
+    font-weight: 600;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,169,110,0.08);
+    pointer-events: none;
+    letter-spacing: 0.1em;
+  }
+
+  .about-cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .about-cta-title em {
+    font-style: italic;
+    color: var(--accent-gold);
+    font-weight: 300;
+  }
+
+  .about-cta-sub {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--stone);
+    max-width: 440px;
+    margin: 0 auto 44px;
+    line-height: 1.85;
+    position: relative;
+  }
+
+  .about-cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    position: relative;
+  }
+
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    .about-hero-left {
+      padding: 60px 48px;
+    }
+    .story-content {
+      padding: 60px 48px;
+    }
+    .artisan-content {
+      padding: 60px 48px;
+    }
+    .philosophy-strip {
+      padding: 48px 40px;
+    }
+    .values-section {
+      padding: 80px 40px;
+    }
+    .about-cta {
+      padding: 80px 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .about-hero-left {
+      padding: 60px 24px;
+    }
+    .about-hero-left::after {
+      display: none;
+    }
+    .about-hero-right {
+      height: 300px;
+    }
+    .philosophy-strip {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 48px 24px;
+    }
+    .philosophy-divider {
+      display: none;
+    }
+    .philosophy-item {
+      padding: 0;
+    }
+    .story-section {
+      grid-template-columns: 1fr;
+    }
+    .story-visual {
+      height: 280px;
+    }
+    .story-content {
+      padding: 48px 24px;
+    }
+    .values-section {
+      padding: 64px 24px;
+    }
+    .values-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .artisan-section {
+      grid-template-columns: 1fr;
+    }
+    .artisan-content {
+      padding: 48px 24px;
+    }
+    .artisan-visual {
+      height: 260px;
+    }
+    .artisan-visual::before {
+      display: none;
+    }
+    .about-cta {
+      padding: 64px 24px;
+    }
+    .about-cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+    .about-hero-stats {
+      flex-direction: column;
+      gap: 24px;
+    }
+  }

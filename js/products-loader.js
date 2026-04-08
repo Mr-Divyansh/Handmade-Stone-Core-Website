@@ -1,7 +1,3 @@
-// products-loader.js
-// Is file ko apne index.html ke end mein add karo
-// <script src="products-loader.js"></script>
-
 document.addEventListener('DOMContentLoaded', function () {
   loadProducts();
 });

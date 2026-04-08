@@ -6,156 +6,7 @@
 <title>StoneCore — Collection</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
-<style>
-  .collection-hero {
-    padding: 160px 80px 80px;
-    background: var(--off-white);
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-  }
-
-  .collection-hero::before {
-    content: 'COLLECTION';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: var(--font-display);
-    font-size: clamp(5rem, 14vw, 16rem);
-    font-weight: 600;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(201,169,110,0.07);
-    pointer-events: none;
-    white-space: nowrap;
-    letter-spacing: 0.1em;
-  }
-
-  .collection-hero .section-label {
-    justify-content: center;
-    margin-bottom: 16px;
-  }
-  .collection-hero .section-label::before { display: none; }
-
-  .collection-hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    font-weight: 400;
-    color: var(--ink);
-    line-height: 1.1;
-    letter-spacing: 0.02em;
-    position: relative;
-  }
-
-  .collection-hero h1 em {
-    font-style: italic;
-    color: var(--accent-gold);
-    font-weight: 300;
-  }
-
-  .collection-hero p {
-    font-family: var(--font-body);
-    font-size: 1.1rem;
-    font-weight: 300;
-    color: var(--stone);
-    margin-top: 20px;
-    position: relative;
-  }
-
-  /* Filter bar */
-  .filter-bar {
-    padding: 32px 80px;
-    background: var(--white);
-    border-bottom: 1px solid var(--sand);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .filter-label {
-    font-family: var(--font-ui);
-    font-size: 0.72rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--stone);
-    margin-right: 8px;
-  }
-
-  .filter-btn {
-    font-family: var(--font-ui);
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--stone);
-    background: transparent;
-    border: 1px solid var(--sand);
-    padding: 8px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-  }
-
-  .filter-btn:hover,
-  .filter-btn.active {
-    background: var(--ink);
-    color: var(--white);
-    border-color: var(--ink);
-  }
-
-  /* Products grid */
-  .collection-grid-wrap {
-    padding: 60px 80px 100px;
-    background: var(--white);
-  }
-
-  .collection-count {
-    font-family: var(--font-ui);
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--stone);
-    margin-bottom: 40px;
-  }
-
-  .collection-count span {
-    color: var(--ink);
-    font-weight: 500;
-  }
-
-  #productsGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-  }
-
-  .no-results {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 80px 0;
-    font-family: var(--font-body);
-    font-size: 1.2rem;
-    color: var(--stone);
-    font-style: italic;
-  }
-
-  @media (max-width: 1100px) {
-    .collection-hero { padding: 140px 40px 60px; }
-    .filter-bar { padding: 24px 40px; }
-    .collection-grid-wrap { padding: 48px 40px 80px; }
-    #productsGrid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  @media (max-width: 768px) {
-    .collection-hero { padding: 120px 24px 48px; }
-    .filter-bar { padding: 20px 24px; }
-    .collection-grid-wrap { padding: 36px 24px 64px; }
-    #productsGrid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  }
-
-  @media (max-width: 480px) {
-    #productsGrid { grid-template-columns: 1fr; }
-  }
-</style>
+<link rel="stylesheet" href="css/collection.css">
 </head>
 <body>
 
@@ -258,21 +109,96 @@
 </div>
 
 <script>
-  const PRODUCTS = [
-    { id:1, name:'Handcrafted Miniature Zen Garden Diorama', category:'Zen Stack', price:1899,
-      image:'Product/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones 1.png', fallback:'img/Image1.png' },
-    { id:2, name:'Harmony Bridge Zen Garden', category:'Bridge Series', price:2299,
-      image:'Product/Harmony Bridge Zen Garden \u2013 Handcrafted Miniature Bonsai Diorama/Harmony Bridge Zen Garden \u2013 Handcrafted Miniature Bonsai Diorama 1.png', fallback:'img/Image2.png' },
-    { id:3, name:'Serene Monk Bonsai Garden', category:'Monk Series', price:2499,
-      image:'Product/Serene Monk Bonsai Garden \u2013 Handcrafted Miniature Zen Diorama/Serene Monk Bonsai Garden \u2013 Handcrafted Miniature Zen Diorama 1.png', fallback:'img/Image3.png' },
-    { id:4, name:'Stone Lantern Bonsai Retreat', category:'Bonsai Collection', price:1999,
-      image:'Product/Stone Lantern Bonsai Retreat/Stone Lantern Bonsai Retreat 1.png', fallback:'img/Image4.png' },
-    { id:5, name:'Whispering Bonsai Sanctuary', category:'Bonsai Collection', price:2199,
-      image:'Product/Whispering Bonsai Sanctuary \u2013 Miniature Zen Garden with Apple Perch/Whispering Bonsai Sanctuary \u2013 Miniature Zen Garden with Apple Perch 1.png', fallback:'img/Image2.png' },
-    { id:6, name:'Whispering Monk Zen Garden', category:'Monk Series', price:1799,
-      image:'Product/Whispering Monk Zen Garden/Whispering Monk Zen Garden1.png', fallback:'img/Image4.png' }
-  ];
-
+ const PRODUCTS = [
+  {
+    id: 1,
+    name: 'Handcrafted Miniature Zen Garden Diorama',
+    category: 'Zen Stack',
+    price: 1899,
+    originalPrice: 1789,
+    rating: 4.8,
+    reviews: 127,
+    image: 'Product/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones/Handcrafted Miniature Zen Garden Diorama with Bonsai & Natural Stones 1.png',
+    fallback: 'img/Image1.png'
+  },
+  {
+    id: 2,
+    name: 'Harmony Bridge Zen Garden',
+    category: 'Bridge Series',
+    price: 2299,
+    originalPrice: 1145,
+    rating: 4.6,
+    reviews: 89,
+    image: 'Product/Harmony Bridge Zen Garden \u2013 Handcrafted Miniature Bonsai Diorama/Harmony Bridge Zen Garden \u2013 Handcrafted Miniature Bonsai Diorama 1.png',
+    fallback: 'img/Image2.png'
+  },
+  {
+    id: 3,
+    name: 'Serene Monk Bonsai Garden',
+    category: 'Monk Series',
+    price: 2499,
+    originalPrice: 1230,
+    rating: 4.9,
+    reviews: 203,
+    image: 'Product/Serene Monk Bonsai Garden \u2013 Handcrafted Miniature Zen Diorama/Serene Monk Bonsai Garden \u2013 Handcrafted Miniature Zen Diorama 1.png',
+    fallback: 'img/Image3.png'
+  },
+  {
+    id: 4,
+    name: 'Stone Lantern Bonsai Retreat',
+    category: 'Bonsai Collection',
+    price: 1999,
+    originalPrice: 999,
+    rating: 4.7,
+    reviews: 156,
+    image: 'Product/Stone Lantern Bonsai Retreat/Stone Lantern Bonsai Retreat 1.png',
+    fallback: 'img/Image4.png'
+  },
+  {
+    id: 5,
+    name: 'Whispering Bonsai Sanctuary',
+    category: 'Bonsai Collection',
+    price: 2199,
+    originalPrice: 1398,
+    rating: 4.8,
+    reviews: 98,
+    image: 'Product/Whispering Bonsai Sanctuary \u2013 Miniature Zen Garden with Apple Perch/Whispering Bonsai Sanctuary \u2013 Miniature Zen Garden with Apple Perch 1.png',
+    fallback: 'img/Image2.png'
+  },
+  {
+    id: 6,
+    name: 'Shizendo Monk Garden',
+    category: 'Premium Zen Collection',
+    price: 2499,
+    originalPrice: 3599,
+    rating: 4.9,
+    reviews: 88,
+    image: 'Product/Shizendo Monk Garden/Shizendo Monk Garden1.png',
+    fallback: 'img/PremiumImage7.png'
+  },
+  {
+    id: 7,
+    name: 'Whispering Monk Zen Garden',
+    category: 'Monk Series',
+    price: 1799,
+    originalPrice: 2499,
+    rating: 4.8,
+    reviews: 67,
+    image: 'Product/Whispering Monk Zen Garden/Whispering Monk Zen Garden1.png',
+    fallback: 'img/Image4.png'
+  },
+  {
+    id: 8,
+    name: 'Hand Rock Piece',
+    category: 'Monk Series',
+    price: 300,
+    originalPrice: 499,
+    rating: 4.5,
+    reviews: 67,
+    image: 'Product/hand rock pieace/Hand made stone1.png',
+    fallback: 'img/Image4.png'
+  }
+];
   let activeFilter = 'all';
 
   function renderProducts(filter) {
