@@ -281,6 +281,8 @@ const PRODUCTS = [
   }
 ];
 
+const RAZORPAY_KEY = 'rzp_test_SawHWgDEpgjVnB';
+
 const STATES_BY_COUNTRY = {
   India: [
     'Andaman and Nicobar Islands',
@@ -492,69 +494,115 @@ window.placeOrder = function(productId, qty, total) {
   const payment   = document.querySelector('input[name="payment"]:checked')?.value;
   const notes     = document.getElementById('notes').value.trim() || '';
 
-  // Handle "Other" country input
   if (country === 'Other') {
     country = document.getElementById('otherCountryName').value.trim();
-    if (!country) {
-      alert('Please enter your country name.');
-      return;
-    }
   }
 
-  // Handle "Other" state input
   if (state === 'Other') {
     state = document.getElementById('otherStateName').value.trim();
-    if (!state) {
-      alert('Please enter your state/province name.');
-      return;
-    }
   }
 
-  if (!firstName || !lastName || !email || !phone || !address || !city || !pincode || !state || !country || !payment) {
+  if (!firstName || !lastName || !email || !phone || !address || !city || !pincode || !state || !country) {
     alert('Please fill in all required fields.');
     return;
   }
 
-  if (!email.includes('@') || !email.includes('.')) {
-    alert('Please enter a valid email address.');
+  if (payment === 'cod') {
+    completeOrder({
+      paymentMethod: 'Cash on Delivery',
+      paymentId: 'COD-' + Date.now(),
+      status: 'pending'
+    });
     return;
   }
 
-  if (phone.length < 10) {
-    alert('Please enter a valid phone number (minimum 10 digits).');
-    return;
-  }
+  const product = PRODUCTS.find(p => p.id === productId);
 
-  if (pincode.length !== 6 || isNaN(pincode)) {
-    alert('Please enter a valid 6-digit pincode.');
-    return;
-  }
+  const options = {
+    key: RAZORPAY_KEY,
+    amount: total * 100,
+    currency: 'INR',
+    name: 'StoneCore',
+    description: product ? product.name : 'StoneCore Order',
+    image: 'img/logo.png',
 
-  const orderDetails = {
-    productId,
-    quantity: qty,
-    total,
-    customer: { firstName, lastName, email, phone },
-    address: { address, city, pincode, state, country },
-    payment,
-    notes,
-    orderDate: new Date().toISOString()
+    handler: function (response) {
+      completeOrder({
+        paymentMethod: 'Razorpay',
+        paymentId: response.razorpay_payment_id,
+        orderId: response.razorpay_order_id || null,
+        signature: response.razorpay_signature || null,
+        status: 'paid'
+      });
+    },
+
+    prefill: {
+      name: `${firstName} ${lastName}`,
+      email: email,
+      contact: phone
+    },
+
+    notes: {
+      address: `${address}, ${city}, ${state}, ${country} - ${pincode}`,
+      customer_note: notes
+    },
+
+    theme: {
+      color: '#c0392b'
+    },
+
+    modal: {
+      ondismiss: function() {
+        alert('Payment cancelled.');
+      }
+    }
   };
 
-  console.log('✅ Order Placed Successfully:', orderDetails);
+  const razorpay = new Razorpay(options);
+  razorpay.open();
+};
 
-  // Hide form and show success message
-  const formElement = document.getElementById('checkoutForm');
-  const successElement = document.getElementById('successMessage');
+function completeOrder(paymentInfo) {
+  const orderDetails = {
+    orderNumber: 'SC-' + Date.now(),
+    payment: paymentInfo,
+    customer: {
+      firstName: document.getElementById('firstName').value.trim(),
+      lastName: document.getElementById('lastName').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim()
+    },
+    shipping: {
+      address: document.getElementById('address').value.trim(),
+      city: document.getElementById('city').value.trim(),
+      pincode: document.getElementById('pincode').value.trim(),
+      state: document.getElementById('state').value,
+      country: document.getElementById('country').value
+    },
+    createdAt: new Date().toISOString()
+  };
 
-  if (formElement) formElement.style.display = 'none';
-  if (successElement) {
-    successElement.style.display = 'block';
-    successElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
+  console.log('ORDER SUCCESS:', orderDetails);
 
-  // Save order in localStorage
   localStorage.setItem('lastOrder', JSON.stringify(orderDetails));
+
+  document.getElementById('checkoutForm').style.display = 'none';
+
+  const successElement = document.getElementById('successMessage');
+  successElement.style.display = 'block';
+
+  successElement.innerHTML = `
+    <div class="success-icon">🎉</div>
+    <div class="success-title">Payment Successful!</div>
+    <div class="success-sub">
+      Your order has been placed successfully.<br><br>
+      <strong>Order ID:</strong> ${orderDetails.orderNumber}<br>
+      <strong>Payment ID:</strong> ${paymentInfo.paymentId}
+    </div>
+    <a href="index.html" class="btn-continue">Continue Shopping →</a>
+  `;
+
+  successElement.scrollIntoView({ behavior: 'smooth' });
 };
 
 function renderCheckout() {
