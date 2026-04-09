@@ -1,0 +1,19 @@
+# Netlify Build Configuration for StoneCore
+
+[build]
+  publish = "."
+  command = "composer install --prefer-dist --no-dev"
+  environment = { PHP_VERSION = "8.2" }
+
+[build.environment]
+  # Ensure Composer uses vendor directory
+  COMPOSER_VENDOR_DIR = "vendor"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  conditions = { Path = ["!/api/*", "!/css/*", "!/js/*", "!/img/*"] }
+
+[context.production.environment]
+  PHP_VERSION = "8.2"
