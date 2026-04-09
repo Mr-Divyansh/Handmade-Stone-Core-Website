@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StoneCore — Premium Handcrafted Zen Decor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    :root {
+      --white: #ffffff;
+      --off-white: #faf9f7;
+      --cream: #f5f0e8;
+      --sand: #e8ddd0;
+      --warm-gray: #b8b0a8;
+      --stone: #8a8278;
+      --dark-stone: #3d3830;
+      --ink: #1a1714;
+      --accent-gold: #c9a96e;
+      --accent-moss: #7a8c6e;
+      --accent-rust: #b5624a;
+      --charcoal: #2a2620;
+      --light-charcoal: #3d3830;
+      --font-display: 'Cinzel', serif;
+      --font-body: 'Cormorant Garamond', serif;
+      --font-ui: 'Jost', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--ink);
+      color: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+    }
+
+    /* ===== STICKY NAVIGATION ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      background: rgba(26, 23, 20, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      padding: 0 40px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--white);
+    }
+
+    .nav-logo span {
+      color: var(--accent-gold);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sand);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent-gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-gold);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-cta {
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--accent-gold);
+      color: var(--ink);
+      padding: 10px 24px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 1024px) {
+      .nav-links {
+        display: none;
+      }
+      nav {
+        padding: 0 30px;
+      }
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-top: 70px;
+      background: linear-gradient(135deg, var(--ink) 0%, var(--charcoal) 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="zen" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse"><circle cx="100" cy="100" r="3" fill="rgba(201,169,110,0.08)"/><path d="M 100 50 Q 150 100 100 150 Q 50 100 100 50" stroke="rgba(201,169,110,0.05)" fill="none" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="%231a1714"/><rect width="1200" height="600" fill="url(%23zen)"/></svg>');
+      opacity: 0.3;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(20px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      animation: heroFade 0.8s ease-out;
+    }
+
+    @keyframes heroFade {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-tag {
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--accent-gold);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 40px;
+      word-spacing: 100vw;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent-gold);
+      font-weight: 300;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--sand);
+      margin-bottom: 50px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--accent-gold);
+      color: var(--ink);
+      padding: 16px 48px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--white);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: -1;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(201, 169, 110, 0.3);
+    }
+
+    .btn-primary:hover::before {
+      transform: translateX(0);
+    }
+
+    .btn-secondary {
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--white);
+      padding: 16px 48px;
+      border: 2px solid var(--sand);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      transform: translateY(-4px);
+    }
+
+    /* ===== CATEGORY BLOCKS ===== */
+    .categories {
+      padding: 100px 60px;
+      background: var(--off-white);
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .category-block {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+      cursor: pointer;
+      group: "category-block";
+    }
+
+    .category-block-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .category-block:hover .category-block-image {
+      transform: scale(1.08);
+    }
+
+    .category-block-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(26, 23, 20, 0.8) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 30px;
+      transition: all 0.4s ease;
+    }
+
+    .category-block-tag {
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 12px;
+    }
+
+    .category-block-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .category-block-cta {
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      width: fit-content;
+    }
+
+    .category-block-cta::after {
+      content: '';
+      width: 25px;
+      height: 2px;
+      background: var(--white);
+      transition: width 0.3s ease;
+    }
+
+    .category-block:hover .category-block-cta::after {
+      width: 35px;
+      background: var(--accent-gold);
+    }
+
+    @media (max-width: 768px) {
+      .category-block {
+        height: 300px;
+      }
+      .categories {
+        padding: 60px 30px;
+      }
+    }
+
+    /* ===== FILTERS & PRODUCT SECTION ===== */
+    .products-section {
+      padding: 80px 60px;
+      background: var(--ink);
+    }
+
+    .section-header {
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .section-label {
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--accent-gold);
+    }
+
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border: 2px solid var(--stone);
+      background: transparent;
+      color: var(--stone);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .filter-btn.active {
+      background: var(--accent-gold);
+      border-color: var(--accent-gold);
+      color: var(--ink);
+    }
+
+    .filter-btn:hover:not(.active) {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      position: relative;
+      background: var(--light-charcoal);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      opacity: 1;
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .product-card.hidden {
+      display: none;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .product-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 60px rgba(201, 169, 110, 0.2);
+    }
+
+    .product-image {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: var(--cream);
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.1);
+    }
+
+    .product-quick-add {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: var(--accent-gold);
+      color: var(--ink);
+      border: none;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: scale(0.8) translateY(20px);
+    }
+
+    .product-card:hover .product-quick-add {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    .product-quick-add:hover {
+      background: var(--white);
+      transform: scale(1.1);
+    }
+
+    .product-info {
+      padding: 24px;
+      background: var(--light-charcoal);
+    }
+
+    .product-category {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.4;
+      min-height: 2.8em;
+    }
+
+    .product-rating {
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      color: var(--sand);
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    .product-rating .stars {
+      color: var(--accent-gold);
+      margin-right: 4px;
+    }
+
+    .product-price {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-body);
+    }
+
+    .product-price-current {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .product-price-original {
+      font-size: 0.85rem;
+      color: var(--stone);
+      text-decoration: line-through;
+    }
+
+    @media (max-width: 768px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .products-section {
+        padding: 60px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== LIFESTYLE SECTION ===== */
+    .lifestyle {
+      position: relative;
+      height: 60vh;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--ink);
+    }
+
+    .lifestyle-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('img/product6/main.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: var(--charcoal);
+    }
+
+    .lifestyle-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26, 23, 20, 0.6) 0%, rgba(42, 38, 32, 0.4) 100%);
+    }
+
+    .lifestyle-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 700px;
+      animation: slideInUp 0.8s ease-out;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .lifestyle-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 25px;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+    }
+
+    .lifestyle-subtitle {
+      font-family: var(--font-body);
+      font-size: 1.15rem;
+      color: var(--sand);
+      margin-bottom: 40px;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--charcoal);
+      padding: 60px;
+      border-top: 1px solid rgba(201, 169, 110, 0.1);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      max-width: 1400px;
+      margin: 0 auto;
+      margin-bottom: 50px;
+    }
+
+    .footer-section h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section li {
+      margin-bottom: 12px;
+    }
+
+    .footer-section a {
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      color: var(--sand);
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent-gold);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(201, 169, 110, 0.1);
+      padding-top: 30px;
+      text-align: center;
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      color: var(--stone);
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--white);
+      margin-bottom: 15px;
+    }
+
+    .footer-logo span {
+      color: var(--accent-gold);
+    }
+
+    .footer-tagline {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--sand);
+      margin-bottom: 0;
+      font-weight: 300;
+    }
+
+    @media (max-width: 768px) {
+      footer {
+        padding: 40px 30px;
+      }
+    }
+
+    /* ===== UTILITY ===== */
+    .max-width {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1024px) {
+      .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .categories-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        word-spacing: normal;
+      }
+      .nav-links {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- STICKY NAVIGATION -->
+  <nav id="navbar">
+    <div class="nav-logo">Stone<span>Core</span></div>
+    <ul class="nav-links">
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#craft">Our Craft</a></li>
+      <li><a href="#lifestyle">Lifestyle</a></li>
+      <li><a href="#footer">Contact</a></li>
+    </ul>
+    <button class="nav-cta">Quick Buy</button>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">New Collection</div>
+      <h1 class="hero-title">STILLNESS. <em>STRENGTH.</em> STONECORE.</h1>
+      <p class="hero-subtitle">Handcrafted Zen gardens that bring ancient tranquility into your modern space. Each piece is a meditation in stone and soul.</p>
+      <div class="hero-cta">
+        <button class="btn-primary" onclick="document.getElementById('shop').scrollIntoView({behavior: 'smooth'})">Shop Collection</button>
+        <button class="btn-secondary" onclick="document.getElementById('craft').scrollIntoView({behavior: 'smooth'})">Our Craft</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY BLOCKS -->
+  <section class="categories" id="craft">
+    <div class="categories-grid">
+      <div class="category-block">
+        <img src="img/product/Serene Monk Bonsai Garden/Serene Monk Bonsai Garden1.png" alt="Monk Series" class="category-block-image" onerror="this.src='img/Image1.png'">
+        <div class="category-block-overlay">
+          <div class="category-block-tag">Craftsmanship</div>
+          <div class="category-block-title">Monk Series</div>
+          <a href="#shop" class="category-block-cta">Discover</a>
+        </div>
+      </div>
+      <div class="category-block">
+        <img src="img/product/Harmony Bridge Zen Garden/Harmony Bridge Zen Garden1.png" alt="Bridge Collection" class="category-block-image" onerror="this.src='img/Image2.png'">
+        <div class="category-block-overlay">
+          <div class="category-block-tag">Architectural</div>
+          <div class="category-block-title">Bridge Collection</div>
+          <a href="#shop" class="category-block-cta">Explore</a>
+        </div>
+      </div>
+      <div class="category-block">
+        <img src="img/product/Handcrafted Miniature Zen Garden Diorama/Zen-Garden-Diorama1.jpeg" alt="Zen Stacks" class="category-block-image" onerror="this.src='img/Image3.png'">
+        <div class="category-block-overlay">
+          <div class="category-block-tag">Layered</div>
+          <div class="category-block-title">Zen Stacks</div>
+          <a href="#shop" class="category-block-cta">Shop</a>
+        </div>
+      </div>
+      <div class="category-block">
+        <img src="img/product/Stone Lantern Bonsai Retreat/Stone Lantern Bonsai Retreat1.png" alt="Premium Bonsai" class="category-block-image" onerror="this.src='img/Image4.png'">
+        <div class="category-block-overlay">
+          <div class="category-block-tag">Botanical</div>
+          <div class="category-block-title">Premium Bonsai</div>
+          <a href="#shop" class="category-block-cta">View</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS SECTION -->
+  <section class="products-section" id="shop">
+    <div class="section-header">
+      <div class="section-label">Curated Collection</div>
+      <h2 class="section-title">All <em>Products</em></h2>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
+      <button class="filter-btn" onclick="filterProducts('Monk Series')">Monk Series</button>
+      <button class="filter-btn" onclick="filterProducts('Bridge Series')">Bridge Series</button>
+      <button class="filter-btn" onclick="filterProducts('Zen Stack')">Zen Stacks</button>
+      <button class="filter-btn" onclick="filterProducts('Bonsai Collection')">Bonsai</button>
+    </div>
+
+    <div class="products-grid" id="productsGrid"></div>
+  </section>
+
+  <!-- LIFESTYLE SECTION -->
+  <section class="lifestyle" id="lifestyle">
+    <div class="lifestyle-bg"></div>
+    <div class="lifestyle-overlay"></div>
+    <div class="lifestyle-content">
+      <h2 class="lifestyle-title">Bring Zen Into Every Corner Of Your World</h2>
+      <p class="lifestyle-subtitle">Whether it's your office desk, meditation space, or living room sanctuary — StoneCore finds its perfect place.</p>
+      <button class="btn-primary">Shop Lifestyle Collection</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">Stone<span>Core</span></div>
+        <p class="footer-tagline">Handcrafted Zen decor for the modern soul.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="#shop">All Products</a></li>
+          <li><a href="#shop">Monk Series</a></li>
+          <li><a href="#shop">Bridge Collection</a></li>
+          <li><a href="#shop">Premium Bonsai</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#craft">Our Craft</a></li>
+          <li><a href="#lifestyle">Lifestyle</a></li>
+          <li><a href="#">Gifting</a></li>
+          <li><a href="#">Wholesale</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Order Tracking</a></li>
+          <li><a href="#">Returns & Exchange</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 StoneCore. All rights reserved. | Handcrafted with ♥ in India</p>
+    </div>
+  </footer>
+
+  <script>
+    // PRODUCT DATA
+    const PRODUCTS = [
+      {
+        id: 1,
+        name: 'Handcrafted Miniature Zen Garden Diorama',
+        category: 'Zen Stack',
+        price: 1200,
+        originalPrice: 1499,
+        rating: 4.9,
+        reviews: 156,
+        image: 'img/product/Handcrafted Miniature Zen Garden Diorama/Zen-Garden-Diorama1.jpeg',
+        fallback: 'img/Image1.png'
+      },
+      {
+        id: 2,
+        name: 'Harmony Bridge Zen Garden',
+        category: 'Bridge Series',
+        price: 899,
+        originalPrice: 1199,
+        rating: 4.8,
+        reviews: 98,
+        image: 'img/product/Harmony Bridge Zen Garden/Harmony Bridge Zen Garden1.png',
+        fallback: 'img/Image2.png'
+      },
+      {
+        id: 3,
+        name: 'Serene Monk Bonsai Garden',
+        category: 'Monk Series',
+        price: 700,
+        originalPrice: 999,
+        rating: 4.7,
+        reviews: 142,
+        image: 'img/product/Serene Monk Bonsai Garden/Serene Monk Bonsai Garden1.png',
+        fallback: 'img/Image3.png'
+      },
+      {
+        id: 4,
+        name: 'Stone Lantern Bonsai Retreat',
+        category: 'Bonsai Collection',
+        price: 499,
+        originalPrice: 699,
+        rating: 4.6,
+        reviews: 87,
+        image: 'img/product/Stone Lantern Bonsai Retreat/Stone Lantern Bonsai Retreat1.png',
+        fallback: 'img/Image4.png'
+      },
+      {
+        id: 5,
+        name: 'Whispering Bonsai Sanctuary',
+        category: 'Bonsai Collection',
+        price: 899,
+        originalPrice: 1299,
+        rating: 4.8,
+        reviews: 121,
+        image: 'img/product/Whispering Bonsai Sanctuary/Whispering Bonsai Sanctuary1.png',
+        fallback: 'img/Image2.png'
+      },
+      {
+        id: 6,
+        name: 'Shizendo Monk Garden',
+        category: 'Monk Series',
+        price: 2499,
+        originalPrice: 3299,
+        rating: 4.9,
+        reviews: 203,
+        image: 'img/product/Shizendo Monk Garden/Shizendo Monk Garden1.png',
+        fallback: 'img/Image4.png'
+      },
+      {
+        id: 7,
+        name: 'Whispering Monk Zen Garden',
+        category: 'Monk Series',
+        price: 1799,
+        originalPrice: 2299,
+        rating: 4.8,
+        reviews: 167,
+        image: 'img/Product/Whispering Monk Zen Garden/Whispering Monk Zen Garden1.png',
+        fallback: 'img/Image4.png'
+      },
+      {
+        id: 8,
+        name: 'Hand-Sculpted Stone Piece',
+        category: 'Zen Stack',
+        price: 300,
+        originalPrice: 499,
+        rating: 4.5,
+        reviews: 64,
+        image: 'img/Product/hand rock pieace/Hand made stone1.png',
+        fallback: 'img/Image4.png'
+      }
+    ];
+
+    // RENDER PRODUCTS
+    function renderProducts(products) {
+      const grid = document.getElementById('productsGrid');
+      grid.innerHTML = products.map(p => `
+        <div class="product-card" data-category="${p.category}">
+          <div class="product-image">
+            <img src="${p.image}" alt="${p.name}" onerror="this.src='${p.fallback}'">
+            <button class="product-quick-add" onclick="addToCart(${p.id})">+</button>
+          </div>
+          <div class="product-info">
+            <div class="product-category">${p.category}</div>
+            <div class="product-name">${p.name}</div>
+            <div class="product-rating">
+              <span class="stars">★</span> ${p.rating} (${p.reviews} reviews)
+            </div>
+            <div class="product-price">
+              <span class="product-price-current">₹${p.price.toLocaleString('en-IN')}</span>
+              <span class="product-price-original">₹${p.originalPrice.toLocaleString('en-IN')}</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // FILTER PRODUCTS
+    function filterProducts(category) {
+      const cards = document.querySelectorAll('.product-card');
+      const btns = document.querySelectorAll('.filter-btn');
+
+      btns.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      cards.forEach((card, index) => {
+        const cardCategory = card.dataset.category;
+        const matches = category === 'all' || cardCategory === category;
+
+        if (!matches) {
+          card.classList.add('hidden');
+        } else {
+          card.classList.remove('hidden');
+          setTimeout(() => {
+            card.style.animation = 'none';
+            setTimeout(() => {
+              card.style.animation = 'fadeInUp 0.6s ease-out forwards';
+            }, 10);
+          }, 50);
+        }
+      });
+    }
+
+    // ADD TO CART
+    function addToCart(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      alert(`Added "${product.name}" to cart!\n\nPrice: ₹${product.price.toLocaleString('en-IN')}`);
+    }
+
+    // STICKY NAV SCROLL EFFECT
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      navbar.classList.toggle('scrolled', window.scrollY > 100);
+    });
+
+    // INITIAL RENDER
+    renderProducts(PRODUCTS);
+
+    // SMOOTH SCROLL BEHAVIOR
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

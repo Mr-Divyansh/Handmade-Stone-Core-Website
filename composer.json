@@ -1,0 +1,13 @@
+{
+    "name": "stonecore/website",
+    "description": "StoneCore Handmade Stone Zen Garden Website",
+    "type": "project",
+    "require": {
+        "twilio/sdk": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "StoneCore\\": "src/"
+        }
+    }
+}

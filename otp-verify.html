@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StoneCore — OTP Verification</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/checkout.css">
+<style>
+.otp-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.otp-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  color: var(--stone);
+  margin-bottom: 20px;
+}
+
+.otp-subtitle {
+  color: var(--clay);
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.otp-input {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 8px;
+  border: 2px solid #e1e1e1;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-family: 'Jost', sans-serif;
+}
+
+.otp-input:focus {
+  outline: none;
+  border-color: var(--red);
+}
+
+.btn-verify {
+  background: var(--red);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.btn-verify:hover {
+  background: #a02b20;
+  transform: translateY(-2px);
+}
+
+.btn-verify:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-resend {
+  background: transparent;
+  color: var(--red);
+  border: 2px solid var(--red);
+  padding: 12px 24px;
+  border-radius: 40px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-resend:hover {
+  background: var(--red);
+  color: white;
+}
+
+.otp-status {
+  margin-top: 20px;
+  font-size: 14px;
+  min-height: 20px;
+}
+
+.otp-status.success {
+  color: #27ae60;
+}
+
+.otp-status.error {
+  color: #e74c3c;
+}
+
+.phone-display {
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-family: 'Jost', sans-serif;
+}
+
+.phone-display strong {
+  color: var(--stone);
+}
+</style>
+</head>
+<body>
+
+<div class="otp-container">
+  <div class="otp-title">Verify Your Phone</div>
+  <div class="otp-subtitle">
+    We've sent a 6-digit OTP to your phone number for Cash on Delivery verification.
+  </div>
+
+  <div class="phone-display">
+    📱 <strong id="phoneDisplay">+91 XXXXX XXXXX</strong>
+  </div>
+
+  <input type="text" id="otpInput" class="otp-input" placeholder="000000" maxlength="6" autocomplete="off">
+
+  <button class="btn-verify" id="verifyBtn" onclick="verifyOtp()">
+    Verify OTP
+  </button>
+
+  <button class="btn-resend" onclick="resendOtp()">
+    Resend OTP
+  </button>
+
+  <div id="otpStatus" class="otp-status"></div>
+</div>
+
+<script>
+let phoneNumber = '';
+let isVerifying = false;
+
+function getQueryParams() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    phone: params.get('phone'),
+    returnUrl: params.get('return') || 'checkout.html'
+  };
+}
+
+function formatPhoneNumber(phone) {
+  if (!phone) return '+91 XXXXX XXXXX';
+  const cleaned = phone.replace(/\D/g, '');
+  const last4 = cleaned.slice(-4);
+  const prefix = cleaned.slice(0, -4);
+  return `+91 ${'*'.repeat(Math.max(0, prefix.length - 2))} ${last4}`;
+}
+
+async function verifyOtp() {
+  const otp = document.getElementById('otpInput').value.trim();
+
+  if (!otp || otp.length !== 6) {
+    showStatus('Please enter a valid 6-digit OTP.', 'error');
+    return;
+  }
+
+  if (isVerifying) return;
+
+  isVerifying = true;
+  document.getElementById('verifyBtn').disabled = true;
+  document.getElementById('verifyBtn').textContent = 'Verifying...';
+
+  try {
+    const response = await fetch('api/verify-otp.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ otp: otp, phone: phoneNumber })
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      showStatus('Phone number verified successfully!', 'success');
+
+      // Store verification status
+      sessionStorage.setItem('phoneVerified', 'true');
+      sessionStorage.setItem('verifiedPhone', phoneNumber);
+
+      // Redirect back to checkout after 2 seconds
+      setTimeout(() => {
+        window.location.href = getQueryParams().returnUrl;
+      }, 2000);
+    } else {
+      showStatus('Invalid OTP. Please try again.', 'error');
+    }
+  } catch (error) {
+    console.error('Verification error:', error);
+    showStatus('Network error. Please try again.', 'error');
+  } finally {
+    isVerifying = false;
+    document.getElementById('verifyBtn').disabled = false;
+    document.getElementById('verifyBtn').textContent = 'Verify OTP';
+  }
+}
+
+async function resendOtp() {
+  if (!phoneNumber) {
+    showStatus('Phone number not found.', 'error');
+    return;
+  }
+
+  document.querySelector('.btn-resend').disabled = true;
+  document.querySelector('.btn-resend').textContent = 'Sending...';
+
+  try {
+    const response = await fetch('api/send-otp.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ phone: phoneNumber })
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      if (result.test_mode) {
+        showStatus('Test mode: Check PHP error log for OTP', 'success');
+      } else {
+        showStatus('OTP sent successfully! Check your phone.', 'success');
+      }
+    } else {
+      showStatus('Failed to send OTP. Please try again.', 'error');
+    }
+  } catch (error) {
+    console.error('Resend error:', error);
+    showStatus('Network error. Please try again.', 'error');
+  } finally {
+    document.querySelector('.btn-resend').disabled = false;
+    document.querySelector('.btn-resend').textContent = 'Resend OTP';
+  }
+}
+
+function showStatus(message, type) {
+  const statusEl = document.getElementById('otpStatus');
+  statusEl.textContent = message;
+  statusEl.className = `otp-status ${type}`;
+}
+
+// Auto-focus OTP input
+document.getElementById('otpInput').focus();
+
+// Handle Enter key
+document.getElementById('otpInput').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    verifyOtp();
+  }
+});
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+  const params = getQueryParams();
+  phoneNumber = params.phone;
+
+  if (!phoneNumber) {
+    showStatus('Phone number not provided. Please go back to checkout.', 'error');
+    return;
+  }
+
+  document.getElementById('phoneDisplay').textContent = formatPhoneNumber(phoneNumber);
+});
+</script>
+
+</body>
+</html>

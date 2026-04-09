@@ -281,7 +281,7 @@ const PRODUCTS = [
   }
 ];
 
-const RAZORPAY_KEY = 'rzp_test_SawHWgDEpgjVnB';
+const RAZORPAY_KEY = 'rzp_test_Saw8eOtVOoE15I';
 
 const STATES_BY_COUNTRY = {
   India: [
@@ -508,11 +508,27 @@ window.placeOrder = function(productId, qty, total) {
   }
 
   if (payment === 'cod') {
-    completeOrder({
-      paymentMethod: 'Cash on Delivery',
-      paymentId: 'COD-' + Date.now(),
-      status: 'pending'
-    });
+    const phone = document.getElementById('phone').value.trim();
+
+    if (!phone || phone.length < 10) {
+      alert('Please enter a valid phone number for COD verification.');
+      return;
+    }
+
+    // Check if phone is already verified in this session
+    if (sessionStorage.getItem('phoneVerified') === 'true' &&
+        sessionStorage.getItem('verifiedPhone') === phone) {
+      completeOrder({
+        paymentMethod: 'Cash on Delivery',
+        paymentId: 'COD-' + Date.now(),
+        status: 'pending'
+      });
+      return;
+    }
+
+    // Redirect to OTP verification page
+    const returnUrl = encodeURIComponent(window.location.href);
+    window.location.href = `otp-verify.html?phone=${encodeURIComponent(phone)}&return=${returnUrl}`;
     return;
   }
 
