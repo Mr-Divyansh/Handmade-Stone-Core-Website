@@ -1,19 +1,14 @@
 # Netlify Build Configuration for StoneCore
+# Note: Netlify doesn't execute PHP. Use vendor/ files as static assets only,
+# or migrate PHP APIs to Netlify Functions, AWS Lambda, or another serverless platform.
 
 [build]
   publish = "."
-  command = "composer install --prefer-dist --no-dev"
-  environment = { PHP_VERSION = "8.2" }
 
-[build.environment]
-  # Ensure Composer uses vendor directory
-  COMPOSER_VENDOR_DIR = "vendor"
-
+# Redirect all routes to index.html for SPA routing (if needed)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  conditions = { Path = ["!/api/*", "!/css/*", "!/js/*", "!/img/*"] }
-
-[context.production.environment]
-  PHP_VERSION = "8.2"
+  # Exclude actual files and directories
+  conditions = { Path = ["!/api/*", "!/css/*", "!/js/*", "!/img/*", "!/vendor/*", "!/composer.json"] }
